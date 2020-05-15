@@ -15,14 +15,15 @@ const chalk = require('chalk');
 const app = express();
 
 // local modules
+const connectDB = require('./mongo/db')
 // const passport = require('./passport');
 // const keys = require('../client/src/config/keys');
 // const connectDB = require('./middleware/db');
 
 // Middleware
 // app.use(cors());
-// app.use(express.urlencoded({ extended: true }));  //  replaces bodyparser.urlencoded
-// app.use(express.json());                          //  replaces bodyparser.json
+// app.use(express.urlencoded({ extended: false }));  //  replaces bodyparser.urlencoded
+app.use(express.json({ extended: false }));  //  replaces bodyparser.json (ES6)
 // app.use(flash());                                 //  for flash messages ( appear/pause/disappear )
 // app.use(function (req, res, next) {               //  Global variables (custom -- used with flash())
 //   res.locals.success_msg = req.flash('success_msg');
@@ -53,17 +54,19 @@ const app = express();
 // app.use(passport.initialize());  // fire off passport
 // app.use(passport.session());   // calls the serialize/deserialize
 
-// test the connection
+// Connect Database
+connectDB();
+// test the server connection
 app.get('/', (req, res) => res.send('API Running'));
 
 // routes
-// app.use('/api/users', require('./routes/api/users'));
-// app.use('/api/auth', require('./routes/api/auth')); 
-// app.use('/api/profile', require('./routes/api/profile'));
+app.use('/api/users', require('./routes/api/users'));
+app.use('/api/auth', require('./routes/api/auth')); 
+app.use('/api/profile', require('./routes/api/profile'));
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => console.log(chalk.yellow(`Server started on port ${PORT}`)));
+app.listen(PORT, () => console.log(chalk.green(`Server started on port ${PORT}`)));
   
 // catch 404 and forward to error handler -- gets here if it falls through everyting above
 // app.use(function (req, res, next) {
