@@ -8,157 +8,103 @@
 
 // node modules
 const express = require('express');
-// const mongoose = require('mongoose');
-// const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');    // see https://jwt.io/#debugger for docs
+const { check, validationResult } = require('express-validator');   //  See: https://express-validator.github.io/docs/
 
 const router = express.Router();
 
 // local modules
 const auth = require('../../middleware/auth');
-const db = require('../../models');
-// const passport = require('../../passport');
-// const keys = require('../../../client/src/config/keys');
+const User = require('../../models/User');
+const keys = require('../../config/keys');
 
-// ********************************************************************************
-// ***** get the current user info -- called on each inbound auth route below *****
-// ********************************************************************************
-// const getCurrentUser = async (req, res) => {
-//   // Expose only non-sensitive properties
-//   const { id, username } = req.user;
-//   // Expose any Social Media memberships
-//   const memberships = await db.Social.find({ userId: new mongoose.Types.ObjectId(id) });
-//   res.json({
-//     id, username,
-//     memberships: memberships.map(m => m.provider)
-//   });
-//   getToken(id);
-// };
-
-// // Return jsonwebtoken -- see https://jwt.io/#debugger for format
-// getToken = async (id) => {
-//   const payload = {
-//     user: {
-//       id: id
-//     }
-//   };
-
-//   // create a token with a four hour expiration
-//   const token = await jwt.sign(payload, `${keys.jwtSecret}`, { expiresIn: '4h' }, (err, token) => {
-//     if (err) {
-//       console.error(err.message);
-//       res.status(500).send('Server Error');
-//     } else {
-//       console.log(token);
-//       res.json({ token });
-//     }
-//   });
-// };
-
-// ****************************************************
-// *****  route: GET to /api/auth                 *****
-// *****  desc: return an authorized user         *****
-// *****  access: Private                         *****
-// *****  matches to: NOTHING on the client side  *****
-// ****************************************************
+// ******************************************************************
+// *****  route: GET to /api/auth                               *****
+// *****  desc: Return authenticated user                       *****
+// *****  access: Private                                       *****
+// *****  matches to: client/src/actions/auth, loaduser()       *****
+// *****       & client/src/reducers/auth.js, case USER_LOADED  *****
+// ******************************************************************
 router.get('/', auth, async (req, res) => {
   try {
-    // get the user by Id (but without the password)
-    const user = await (await db.User.findById(req.user.id)).isSelected('-password')
-    // pass the user along
+    user = await User.findById(req.user.id).select('-password');    //  NOTE: to self req.user.id is from auth (jwt.verify)
     res.json(user);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error - returning authorized user')
+    res.status(500).send('Server Error - authenticating user');
   }
 });
+// ********************************************************************
+// *****  route: POST to /api/auth                                *****
+// *****  desc: Authenticate user & get token                     *****
+// *****  access: Public                                          *****
+// *****  matches to: client/src/actions/auth, login()            *****
+// *****       & client/src/reducers/auth.js, case LOGIN_SUCCESS  *****
+// ********************************************************************
+const checks = [
+  check('username', 'Username is required').not().isEmpty(),
+  check('password', 'Password is required').exists()
+];
+router.post('/',
+  checks,
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    };
 
-// *****************************************************************
-// ***** GET to /api/ will return current logged in user info  *****
-// ***** matches to: actions/auth loadUser()                   *****
-// *****             & src/reducers/auth.js/USER_LOADED        *****
-// *****************************************************************
-// router.get(`/`, auth, async (req, res) => {
-//   try {
-//     const user = await db.User.findById(req.user.id).select('-password'); // leave off password
-   
-//     if (!req.user) {
-//       return res.status(401).json({
-//         message: 'You are not currently logged in.'
-//       });
-//     }
+    // deconstruct body for easier access to individual fields
+    const { username, password } = req.body;
 
-//     getCurrentUser(req, res);
-//     // send user to front end
-//     res.json(user);
-//   } catch (err) {
-//     console.error(err.message);
-//     res.status(500).send('Server Error');
-//   }
-// });
+    try {
+      // See if user exists
+      let user = await User.findOne({ username });
 
-// *******************************************************************************
-// ***** POST to /api/auth/local will login a user and return the user data  *****
-// ***** matches to: actions/auth/loginLocal()                               *****
-// *****             & src/reducers/auth.js/LOGIN_SUCCESS                    *****
-// *******************************************************************************
-// router.post('/auth/local', passport.authenticate('local'), (req, res, next) => {
-// router.post(`/local`, passport.authenticate('local'), auth, (req, res, next) => {
-//   if (!req.user) {
-//     return res.status(401).json({
-//       message: 'Invalid username or password.'
-//     })
-//   };
+      // this is an error -- the user should be there
+      if (!user) {
+        return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
+      }
 
-//   getToken();
-//   next();
-// });
+      //  Validate password
+      //  NOTE: in bcrypt.compare, password is the entered password
+      //                           user.password is the encrypted password
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) {
+        return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
+      }
 
-// **********************************************************************************
-// ***** POST to /api/auth/facebook will login a user and return the user data  *****
-// ***** matches to: actions/auth/loginFacebook()                               *****
-// *****             & src/reducers/auth.js/LOGIN_SUCCESS                       *****
-// **********************************************************************************
-// router.post('/auth/facebook', passport.authenticate('facebook'), (req, res, next) => {
-// router.post(`/facebook`, passport.authenticate('facebook'), auth, (req, res, next) => {
-//   if (!req.user) {
-//     return res.status(401).json({
-//       message: 'Invalid username or password.'
-//     })
-//   };
+      // Return jsonwebtoken
+      const payload = { user: { id: user.id } };
+        
+      jwt.sign(
+        payload,
+        keys.jwtSecret,
+        { expiresIn: 604800 },    //  7 days
+        (err, token) => {
+          // if the process errors out -- throw the error
+          if (err) throw err;
+          // no error -- send the token to the client side in the response (res.json({ token }))
+          res.json({ token });
+        }
+      );
 
-//   getCurrentUser(req, res);
-//   next();
-// });
-
-// *********************************************************************************
-// ***** POST to /api/auth/twitter will login a user and return the user data  *****
-// ***** matches to: actions/auth/loginTwitter()                               *****
-// *****             & src/reducers/auth.js/LOGIN_SUCCESS                      *****
-// *********************************************************************************
-// router.post('/auth/twitter', passport.authenticate('twitter'), (req, res, next) => {
-// router.post(`/twitter`, passport.authenticate('twitter'), auth, (req, res, next) => {
-//   if (!req.user) {
-//     return res.status(401).json({
-//       message: 'Invalid username or password.'
-//     })
-//   };
-
-//   getCurrentUser(req, res);
-//   next();
-// });
+    } catch (err) {
+      console.error(chalk.red(err.message));
+      res.status(500).send('Server error - serving user');
+    }
+  }
+);
 
 // *********************************************************************************
 // ***** DELETE to /api/auth will logout the current user & clear the profile  *****
 // ***** matches to: actions/auth/logout()                                     *****
 // *****             & src/reducers/auth.js/LOGOUT                             *****
 // *********************************************************************************
-// router.delete('/auth', (req, res, next) => {
 // router.delete(`/`, (req, res, next) => {
 //   req.logout();
 //   req.session.destroy();
-//   res.json({
-//     message: 'You have been logged out.'
-//   });
+//   res.json({ message: 'You have been logged out.' });
 //   next();
 // })
 

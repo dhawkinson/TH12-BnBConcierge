@@ -2,7 +2,6 @@
 // ***************************************************************************
 // ***** server side - src/config/prod.js                                *****
 // ***** This contains the configuation key values for the prod side app *****
-// *****  NOTE: see file comments in config/passport.js                  *****
 // ***************************************************************************
 
 module.exports = {

@@ -8,33 +8,16 @@
 
 // node modules
 const express = require('express');
-const { check, validationResult } = require('express-validator');
+const { check, validationResult } = require('express-validator');   //  See: https://express-validator.github.io/docs/
 const chalk = require('chalk');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-// const gravatar = require('gravatar');
-// const passport = require('passport');
-// const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');    // see https://jwt.io/#debugger for docs
 
 const router = express.Router();
 
 // local modules
-const db = require('../../models');
+const User = require('../../models/User');
 const keys = require('../../config/keys');
-
-// ****************************************************************
-// *****  get the current user info -- called on auth routes  *****
-// ****************************************************************
-// const getCurrentUser = async (req, res) => {
-//   // Expose only non-sensitive properties
-//   const { id, username } = req.user;
-//   // Expose any Social Media memberships
-//   const memberships = await db.Social.find({ userId: new mongoose.Types.ObjectId(id) });
-//   res.json({
-//     id, username,
-//     memberships: memberships.map(m => m.provider)
-//   });
-// };
 
 // ****************************************************
 // *****  route: GET to /api/users                *****
@@ -42,7 +25,7 @@ const keys = require('../../config/keys');
 // *****  access: Public                          *****
 // *****  matches to: NOTHING on the client side  *****
 // ****************************************************
-router.get('/', (req, res) => res.send('User route'));    // use with POSTMAN
+router.get('/', (req, res) => res.send('User route'));    // use with POSTMAN for valdating route
 
 // ***********************************************************************
 // *****  route: POST to /api/users                                  *****
@@ -51,10 +34,8 @@ router.get('/', (req, res) => res.send('User route'));    // use with POSTMAN
 // *****  matches to: client/src/actions/auth, register()            *****
 // *****       & client/src/reducers/auth.js, case REGISTER_SUCCESS  *****
 // ***********************************************************************
-//  See: https://express-validator.github.io/docs/
 const checks = [
   check('username', 'Username is required').not().isEmpty(),
-  check('email', 'Please include a valid email').isEmail(),
   check('password', 'Password is required and must be at least 6 characters').isLength({ min: 6 })
 ];
 router.post('/',
@@ -66,32 +47,21 @@ router.post('/',
     };
 
     // deconstruct body for easier access to individual fields
-    const { username, email, password } = req.body;
+    const { username, password } = req.body;
 
     try {
       // See if user exists
-      let user = await db.User.findOne({ username });
+      let user = await User.findOne({ username });
 
       // this is an error -- the user should not be there
       if (user) {
+        // NOTE: to self -- we are formatting the error as an array of errors to be consistent on the client side
         return res.status(400).json({ errors: [{ msg: 'Username already in use!' }] });
       }
 
       // No user -- we are good to go
-
-      // if I decide to add gravatars, remove the comments above & here
-      // will need to update User model to accomodate gravatars
-      // waiting to see how that might work with Social credentials
-      // const avatar = gravatar.url(email, {
-      //   s: '200',
-      //   r: 'pg',
-      //   d: 'mm'
-      // });
-
-      user = new db.User({
+      user = new User({
         username,
-        email,
-        // avatar,
         password
       });
   
@@ -99,25 +69,27 @@ router.post('/',
       const rounds = 10;    // 10 is recommended by docs
       const salt = await bcrypt.genSalt(rounds);
       user.password = await bcrypt.hash(password, salt);
+      user.provider = 'local';
+      user.providerProfileId = '';
       await user.save();
 
-      // Return jsonwebtoken -- see https://jwt.io/#debugger (payload is the center section of jwt)
+      // Return jsonwebtoken
       const payload = { user: { id: user.id } };
         
       jwt.sign(
         payload,
         keys.jwtSecret,
-        { expiresIn: '4hr' },
+        { expiresIn: 604800 },    //  7 days
         (err, token) => {
           // if the process errors out -- throw the error
           if (err) throw err;
-          // no error -- send the token in the response (res.json())
+          // no error -- send the token to the client side in the response (res.json({ token }))
           res.json({ token });
         }
       );
     } catch (err) {
       console.error(chalk.red(err.message));
-      res.status(500).send('Server error - finding user');
+      res.status(500).send('Server error - serving user');
     }
   }
 );

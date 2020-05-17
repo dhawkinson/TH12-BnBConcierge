@@ -1,4 +1,4 @@
-// auth.js -- server side (middleware/auth)
+// auth.js
 // **************************************************************
 // *****  Server side -- server/middleware/auth.js          *****
 // *****  Authorize (or not) a user. Authorization rules:   *****
@@ -7,7 +7,10 @@
 // *****   3. If found, it must validate using jwt secret   *****
 // **************************************************************
 
+// node modules
 const jwt = require('jsonwebtoken');
+
+// local modules
 const keys = require('../config/keys');
 
 module.exports = function (req, res, next) {

@@ -2,7 +2,6 @@
 //*******************************************************************************************
 //*****  Server side -- src/config/dev.js === DO NOT COMMIT THIS FILE ===               *****
 //*****  A file containing the values used for interfaces keys, to be used in dev only  *****
-//*****  NOTE: see file comments in config/passport.js                                  *****
 //*******************************************************************************************
 
 module.exports = {

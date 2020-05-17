@@ -12,12 +12,21 @@ const UserSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  email: String,
   // NOTE: to self -- password is entered in Register.js for Local users
-  // password is populated with accessToken for Social Media users
+  // may not be used at all for Social users -- waiting to see
   password: {
+    type: String
+  },
+  // NOTE: to self -- provider and providerProfileId anticipate future addition
+  //       of credentialing with Social Media (facebook & twitter)
+  provider: {
     type: String,
+    enum: ['local','facebook', 'twitter'],
     required: true
+  },
+  // NOTE: to self -- providerProfileId used only with social media login
+  providerProfileId: {
+    type: String
   },
   dateAdded: {
     type: Date,

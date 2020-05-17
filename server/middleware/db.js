@@ -1,9 +1,8 @@
 // db.js
-//*******************************************************
-//*****  Server side -- server/config/db.js         *****
-//*****  The server side db Connection for the app  *****
-//*******************************************************
-
+// ****************************************************
+// *****  Server side -- server/middleware/db.js  *****
+// *****  Create the connection to MongoDB        *****
+// ****************************************************
 // node modules
 const mongoose = require('mongoose');       // require mongoose ODM library
 const chalk    = require('chalk');          // used for coloring console.log output
