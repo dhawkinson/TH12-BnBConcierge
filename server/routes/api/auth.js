@@ -18,7 +18,7 @@ const router = express.Router();
 const auth = require('../../middleware/auth');
 const User = require('../../models/User');
 const keys = require('../../config/keys');
-
+   
 // ******************************************************************
 // *****  route: GET to /api/auth                               *****
 // *****  desc: Return authenticated user                       *****
@@ -46,9 +46,7 @@ const checks = [
   check('username', 'Username is required').not().isEmpty(),
   check('password', 'Password is required').exists()
 ];
-router.post('/',
-  checks,
-  async (req, res) => {
+router.post('/', checks, async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -77,14 +75,10 @@ router.post('/',
       // Return jsonwebtoken
       const payload = { user: { id: user.id } };
         
-      jwt.sign(
-        payload,
-        keys.jwtSecret,
-        { expiresIn: 604800 },    //  7 days
-        (err, token) => {
+      jwt.sign( payload, keys.jwtSecret,  { expiresIn: 604800 }, (err, token) => {
           // if the process errors out -- throw the error
           if (err) throw err;
-          // no error -- send the token to the client side in the response (res.json({ token }))
+          // no error -- send the token to the client side
           res.json({ token });
         }
       );

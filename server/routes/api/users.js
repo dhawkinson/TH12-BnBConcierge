@@ -29,7 +29,7 @@ router.get('/', (req, res) => res.send('User route'));    // use with POSTMAN fo
 
 // ***********************************************************************
 // *****  route: POST to /api/users                                  *****
-// *****  desc: Register a user                                      *****
+// *****  desc: Register (create) a user                             *****
 // *****  access: Public                                             *****
 // *****  matches to: client/src/actions/auth, register()            *****
 // *****       & client/src/reducers/auth.js, case REGISTER_SUCCESS  *****

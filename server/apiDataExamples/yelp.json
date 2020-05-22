@@ -1,0 +1,472 @@
+[
+  {
+    "id": "10X5MkoOzgEej0bA3V6F7A",
+    "alias": "mama-stortinis-federal-way-federal-way",
+    "name": "Mama Stortini's - Federal Way",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/mY3cj1_rGR-2tujNCxpAng/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/mama-stortinis-federal-way-federal-way?adjust_creative=Ae-togPN2oN8uGNQ9DPiyA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=Ae-togPN2oN8uGNQ9DPiyA",
+    "review_count": 124,
+    "categories": [
+      {
+        "alias": "italian",
+        "title": "Italian"
+      },
+      {
+        "alias": "wine_bars",
+        "title": "Wine Bars"
+      },
+      {
+        "alias": "tradamerican",
+        "title": "American (Traditional)"
+      }
+    ],
+    "rating": 3.5,
+    "coordinates": {
+      "latitude": 47.31478,
+      "longitude": -122.30896
+    },
+    "transactions": [
+      "pickup",
+      "delivery"
+    ],
+    "price": "$$",
+    "location": {
+      "address1": "1911 South 320th St",
+      "address2": null,
+      "address3": "",
+      "city": "Federal Way",
+      "zip_code": "98003",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "1911 South 320th St",
+        "Federal Way, WA 98003"
+      ]
+    },
+    "phone": "+12533360330",
+    "display_phone": "(253) 336-0330",
+    "distance": 4407.9648097122
+  },
+  {
+    "id": "qIS14p6byRYo6OJniK-g5g",
+    "alias": "pizza-pizazz-federal-way",
+    "name": "Pizza Pizazz",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/6QmqZGXwhccBP9Q8UZK1mA/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/pizza-pizazz-federal-way?adjust_creative=Ae-togPN2oN8uGNQ9DPiyA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=Ae-togPN2oN8uGNQ9DPiyA",
+    "review_count": 238,
+    "categories": [
+      {
+        "alias": "pizza",
+        "title": "Pizza"
+      },
+      {
+        "alias": "italian",
+        "title": "Italian"
+      }
+    ],
+    "rating": 4,
+    "coordinates": {
+      "latitude": 47.30687,
+      "longitude": -122.33585
+    },
+    "transactions": [
+      "delivery"
+    ],
+    "price": "$$",
+    "location": {
+      "address1": "32925 1st Ave S",
+      "address2": "",
+      "address3": "",
+      "city": "Federal Way",
+      "zip_code": "98003",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "32925 1st Ave S",
+        "Federal Way, WA 98003"
+      ]
+    },
+    "phone": "+12536616161",
+    "display_phone": "(253) 661-6161",
+    "distance": 3497.4049622629377
+  },
+  {
+    "id": "2Nky_JrH-KzrKE5OZKmZBA",
+    "alias": "pops-pizza-and-pasta-federal-way-2",
+    "name": "Pop's Pizza & Pasta",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/QiVnvDFIk2X97t4MNnAXrQ/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/pops-pizza-and-pasta-federal-way-2?adjust_creative=Ae-togPN2oN8uGNQ9DPiyA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=Ae-togPN2oN8uGNQ9DPiyA",
+    "review_count": 240,
+    "categories": [
+      {
+        "alias": "pizza",
+        "title": "Pizza"
+      },
+      {
+        "alias": "italian",
+        "title": "Italian"
+      }
+    ],
+    "rating": 4.5,
+    "coordinates": {
+      "latitude": 47.322696685791,
+      "longitude": -122.312339782715
+    },
+    "transactions": [
+      "pickup",
+      "delivery"
+    ],
+    "price": "$$",
+    "location": {
+      "address1": "1620 S 312th St",
+      "address2": "",
+      "address3": "",
+      "city": "Federal Way",
+      "zip_code": "98003",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "1620 S 312th St",
+        "Federal Way, WA 98003"
+      ]
+    },
+    "phone": "+12538397100",
+    "display_phone": "(253) 839-7100",
+    "distance": 3832.8693650592
+  },
+  {
+    "id": "bmJpu_z7ziYKBSMq0f_HPg",
+    "alias": "verrazanos-federal-way",
+    "name": "Verrazano's",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/7eej83-zxQr_W30z6DMSLg/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/verrazanos-federal-way?adjust_creative=Ae-togPN2oN8uGNQ9DPiyA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=Ae-togPN2oN8uGNQ9DPiyA",
+    "review_count": 199,
+    "categories": [
+      {
+        "alias": "italian",
+        "title": "Italian"
+      },
+      {
+        "alias": "diners",
+        "title": "Diners"
+      },
+      {
+        "alias": "wine_bars",
+        "title": "Wine Bars"
+      }
+    ],
+    "rating": 3.5,
+    "coordinates": {
+      "latitude": 47.34235,
+      "longitude": -122.31277
+    },
+    "transactions": [
+      "delivery"
+    ],
+    "price": "$$",
+    "location": {
+      "address1": "28835 Pacific Hwy S",
+      "address2": "",
+      "address3": "",
+      "city": "Federal Way",
+      "zip_code": "98003",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "28835 Pacific Hwy S",
+        "Federal Way, WA 98003"
+      ]
+    },
+    "phone": "+12539464122",
+    "display_phone": "(253) 946-4122",
+    "distance": 3714.670313015675
+  },
+  {
+    "id": "jEAM30ebyRcGEDBLSS9BIA",
+    "alias": "vinces-italian-restaurant-and-pizzeria-federal-way-6",
+    "name": "Vince's Italian Restaurant & Pizzeria",
+    "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/I_zJk_TKpE4aHUr3R693Kg/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/vinces-italian-restaurant-and-pizzeria-federal-way-6?adjust_creative=Ae-togPN2oN8uGNQ9DPiyA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=Ae-togPN2oN8uGNQ9DPiyA",
+    "review_count": 214,
+    "categories": [
+      {
+        "alias": "pizza",
+        "title": "Pizza"
+      },
+      {
+        "alias": "italian",
+        "title": "Italian"
+      }
+    ],
+    "rating": 3,
+    "coordinates": {
+      "latitude": 47.31121,
+      "longitude": -122.314575
+    },
+    "transactions": [
+      "delivery"
+    ],
+    "price": "$$",
+    "location": {
+      "address1": "32411 Pacific Hwy S",
+      "address2": "",
+      "address3": "",
+      "city": "Federal Way",
+      "zip_code": "98003",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "32411 Pacific Hwy S",
+        "Federal Way, WA 98003"
+      ]
+    },
+    "phone": "+12538391496",
+    "display_phone": "(253) 839-1496",
+    "distance": 4254.479490356012
+  },
+  {
+    "id": "kL_vaB6bdYz3vOeC_DABuw",
+    "alias": "olive-garden-carside-pickup-available-federal-way",
+    "name": "Olive Garden - Carside Pickup Available",
+    "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/gA1Ndq76gkh7l2HSSbwyxg/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/olive-garden-carside-pickup-available-federal-way?adjust_creative=Ae-togPN2oN8uGNQ9DPiyA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=Ae-togPN2oN8uGNQ9DPiyA",
+    "review_count": 214,
+    "categories": [
+      {
+        "alias": "italian",
+        "title": "Italian"
+      },
+      {
+        "alias": "salad",
+        "title": "Salad"
+      },
+      {
+        "alias": "soup",
+        "title": "Soup"
+      }
+    ],
+    "rating": 3,
+    "coordinates": {
+      "latitude": 47.28783,
+      "longitude": -122.31299
+    },
+    "transactions": [],
+    "price": "$$",
+    "location": {
+      "address1": "35030 Enchanted Pkwy S",
+      "address2": "",
+      "address3": "",
+      "city": "Federal Way",
+      "zip_code": "98003",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "35030 Enchanted Pkwy S",
+        "Federal Way, WA 98003"
+      ]
+    },
+    "phone": "+12538151375",
+    "display_phone": "(253) 815-1375",
+    "distance": 6210.0897759058635
+  },
+  {
+    "id": "DC1S5q5uHmRnHNMOtgGUYA",
+    "alias": "via-marina-wood-fired-pizza-and-italian-cafe-des-moines-3",
+    "name": "via Marina Wood Fired Pizza & Italian Cafe",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/9LWEeR5Ky-RMRlOyfryIBA/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/via-marina-wood-fired-pizza-and-italian-cafe-des-moines-3?adjust_creative=Ae-togPN2oN8uGNQ9DPiyA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=Ae-togPN2oN8uGNQ9DPiyA",
+    "review_count": 236,
+    "categories": [
+      {
+        "alias": "pizza",
+        "title": "Pizza"
+      },
+      {
+        "alias": "italian",
+        "title": "Italian"
+      },
+      {
+        "alias": "bars",
+        "title": "Bars"
+      }
+    ],
+    "rating": 4,
+    "coordinates": {
+      "latitude": 47.3982085,
+      "longitude": -122.3240175
+    },
+    "transactions": [
+      "pickup",
+      "delivery"
+    ],
+    "price": "$$",
+    "location": {
+      "address1": "22636 Marine View Dr S",
+      "address2": "",
+      "address3": "",
+      "city": "Des Moines",
+      "zip_code": "98198",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "22636 Marine View Dr S",
+        "Des Moines, WA 98198"
+      ]
+    },
+    "phone": "+12065922659",
+    "display_phone": "(206) 592-2659",
+    "distance": 7698.062913348596
+  },
+  {
+    "id": "9QdPuTSnoCvfoScXh4cfoA",
+    "alias": "athens-pizza-and-pasta-des-moines",
+    "name": "Athens Pizza & Pasta",
+    "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/86BJniwAG187csw68uT6Uw/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/athens-pizza-and-pasta-des-moines?adjust_creative=Ae-togPN2oN8uGNQ9DPiyA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=Ae-togPN2oN8uGNQ9DPiyA",
+    "review_count": 73,
+    "categories": [
+      {
+        "alias": "pizza",
+        "title": "Pizza"
+      },
+      {
+        "alias": "italian",
+        "title": "Italian"
+      },
+      {
+        "alias": "greek",
+        "title": "Greek"
+      }
+    ],
+    "rating": 3.5,
+    "coordinates": {
+      "latitude": 47.4006958007812,
+      "longitude": -122.324081420898
+    },
+    "transactions": [
+      "delivery"
+    ],
+    "price": "$$",
+    "location": {
+      "address1": "22340 Marine View Dr S",
+      "address2": "",
+      "address3": "",
+      "city": "Des Moines",
+      "zip_code": "98198",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "22340 Marine View Dr S",
+        "Des Moines, WA 98198"
+      ]
+    },
+    "phone": "+12068244454",
+    "display_phone": "(206) 824-4454",
+    "distance": 7962.3655284240485
+  },
+  {
+    "id": "L0QRUec3DGqx_2liIbZflw",
+    "alias": "tuscany-at-des-moines-creek-des-moines-2",
+    "name": "Tuscany at Des Moines Creek",
+    "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/R8RX82b4owWIRNSZ2TAkMQ/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/tuscany-at-des-moines-creek-des-moines-2?adjust_creative=Ae-togPN2oN8uGNQ9DPiyA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=Ae-togPN2oN8uGNQ9DPiyA",
+    "review_count": 73,
+    "categories": [
+      {
+        "alias": "italian",
+        "title": "Italian"
+      },
+      {
+        "alias": "greek",
+        "title": "Greek"
+      },
+      {
+        "alias": "mediterranean",
+        "title": "Mediterranean"
+      }
+    ],
+    "rating": 3.5,
+    "coordinates": {
+      "latitude": 47.40627,
+      "longitude": -122.32439
+    },
+    "transactions": [
+      "pickup",
+      "delivery"
+    ],
+    "price": "$$",
+    "location": {
+      "address1": "21830 Marine View Dr S",
+      "address2": "",
+      "address3": "",
+      "city": "Des Moines",
+      "zip_code": "98198",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "21830 Marine View Dr S",
+        "Des Moines, WA 98198"
+      ]
+    },
+    "phone": "+12068783855",
+    "display_phone": "(206) 878-3855",
+    "distance": 8536.035664366926
+  },
+  {
+    "id": "NaGADNWJ-ns05-QVT3xqSQ",
+    "alias": "can-am-pizza-federal-way-5",
+    "name": "Can-Am Pizza",
+    "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/Hw43Dw1FlKOb3ZXD1i-k2g/o.jpg",
+    "is_closed": false,
+    "url": "https://www.yelp.com/biz/can-am-pizza-federal-way-5?adjust_creative=Ae-togPN2oN8uGNQ9DPiyA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=Ae-togPN2oN8uGNQ9DPiyA",
+    "review_count": 42,
+    "categories": [
+      {
+        "alias": "pizza",
+        "title": "Pizza"
+      },
+      {
+        "alias": "indpak",
+        "title": "Indian"
+      },
+      {
+        "alias": "italian",
+        "title": "Italian"
+      }
+    ],
+    "rating": 3.5,
+    "coordinates": {
+      "latitude": 47.310283,
+      "longitude": -122.312891
+    },
+    "transactions": [
+      "delivery"
+    ],
+    "price": "$$",
+    "location": {
+      "address1": "32510 Pacific Hwy S",
+      "address2": "",
+      "address3": "",
+      "city": "Federal Way",
+      "zip_code": "98003",
+      "country": "US",
+      "state": "WA",
+      "display_address": [
+        "32510 Pacific Hwy S",
+        "Federal Way, WA 98003"
+      ]
+    },
+    "phone": "+12536617722",
+    "display_phone": "(253) 661-7722",
+    "distance": 4417.740603876909
+  }
+]
