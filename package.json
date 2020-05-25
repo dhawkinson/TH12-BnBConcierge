@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Full Stack (MERN) BnB Concierge App",
   "author": "Doug Hawkinson",
+  "private": true,
   "license": "MIT",
   "main": "index.js",
   "scripts": {
@@ -36,5 +37,6 @@
   "devDependencies": {
     "concurrently": "^5.2.0",
     "nodemon": "^2.0.3"
-  }
+  },
+  "proxy": "http://localhost:5000"
 }

@@ -1,0 +1,58 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "description": "Full Stack (MERN) BnB Concierge App (client side)",
+  "author": "Doug Hawkinson",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.9.12",
+    "@material-ui/icons": "^4.9.1",
+    "axios": "^0.19.2",
+    "bootstrap": "^4.4.1",
+    "chalk": "^4.0.0",
+    "connect": "^3.7.0",
+    "connect-flash": "^0.1.1",
+    "http-proxy-middleware": "^1.0.3",
+    "jquery": "^3.5.1",
+    "moment": "^2.24.0",
+    "react": "^16.13.1",
+    "react-bootstrap": "^1.0.1",
+    "react-dom": "^16.13.1",
+    "react-moment": "^0.9.7",
+    "react-redux": "^7.2.0",
+    "react-responsive-embed": "^2.1.0",
+    "react-router-dom": "^5.1.2",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "typescript": "^3.8.3",
+    "uuid": "^7.0.3"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "react-scripts": "3.4.1"
+  }
+}
