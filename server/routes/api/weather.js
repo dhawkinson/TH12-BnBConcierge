@@ -18,7 +18,7 @@ const axios = require('axios');
 const chalk = require('chalk');
 
 // local modules
-const keys = require('./config/keys');
+const keys = require('../../../client/src/config/keys');
 
 const apiUrl = keys.darkskyBaseUrl;
 const queryStr = {

@@ -9,7 +9,7 @@ const chalk    = require('chalk');          // used for coloring console.log out
 
 // local modules
 // const keys = require('../../client/src/config/keys') // require the config file pointer
-const keys = require('../config/keys'); // require the config file pointer
+const keys = require('../../client/src/config/keys'); // require the config file pointer
 const URI  = keys.mongoURI                    // get the mongo connection string from keys file
 
 const connectDB = async () => {

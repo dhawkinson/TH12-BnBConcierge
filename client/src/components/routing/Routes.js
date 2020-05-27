@@ -14,7 +14,7 @@ import Home from '../pages/Home'
 import Weather from '../pages/Weather'
 import Dining from '../pages/Dining'
 import Attractions from '../pages/Attractions'
-import Profiles from '../pages/Profiles'
+import Favorites from '../pages/Favorites'
 import NotFound from '../pages/helpers/NotFound'
 import PrivateRoute from './PrivateRoute'
 import Alert from '../pages/helpers/Alert'
@@ -31,7 +31,7 @@ const Routes = () => {
         <PrivateRoute exact path = '/weather' component = { Weather } /> 
         <PrivateRoute exact path = '/dining' component = { Dining } /> 
         <PrivateRoute exact path = '/attractions' component = { Attractions } /> 
-        <PrivateRoute exact path = '/profiles' component = { Profiles } /> 
+        <PrivateRoute exact path = '/favorites' component = { Favorites } /> 
         <Route component = { NotFound } />
       </Switch> 
     </section> 

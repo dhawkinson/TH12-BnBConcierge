@@ -12,7 +12,7 @@ const router = express.Router();
 const { check, validationResult } = require('express-validator');
 
 // local modules
-const keys = require('../../config/keys');
+const keys = require('../../../client/src/config/keys');
 const auth = require('../../middleware/auth')
 const Favorite = require('../../models/Favorite');
 const User = require('../../models/User');

@@ -15,7 +15,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import RegisterIcon from '@material-ui/icons/PersonAdd'
 
-import { RegisterButton } from '../../localStyles/loginButtons'
+import { RegisterButton } from '../../localStyles/navButtons'
 import { setAlert } from '../../actions/alert'
 import { register } from '../../actions/auth'
 import RegisterImage from '../../assets/icons/user+-black.png'
@@ -23,16 +23,15 @@ import RegisterImage from '../../assets/icons/user+-black.png'
 // NOTE: this format of using the params is an ES6 destructure of props
 const Register = ({ setAlert, register, isAuthenticated }) => {
 
-  // set initial state (formData)
+  // set initial state (formData) & setForData updates state
   const [formData, setFormData] = useState({
     username: '',
-    email: '',
     password: '',
     password2: ''
   })
 
   // deconstruct formData
-  const { username, email, password, password2 } = formData
+  const { username, password, password2 } = formData
 
   // change handler - dynamic and useful for each field because we use value
   const onChange = e => setFormData(
@@ -49,7 +48,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
       setAlert('Passwords do not match', 'danger')
     } else {
       // this is placeholder code that will be removed
-      register({ username, email, password })
+      register({ username, password })
     }
   }
 
@@ -75,20 +74,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                     onChange={e => onChange(e)}
 
                   />
-              </Form.Group>
-              <Form.Group controlId='formBasicEmail' className='auth-entry'>
-                <Form.Control 
-                  type="email" 
-                  placeholder="Email Address" 
-                  name="email" 
-                  value={email}
-                  onChange={e => onChange(e)} 
-
-                />
-                <small className="form-text">
-                  <p>We will <strong><em>NEVER</em></strong> send you email you didn't ask for.</p>
-                  <p style={{marginTop: '-1rem' }}>We will <strong><em>NEVER</em></strong> sell your email.</p>
-                </small>
               </Form.Group>
               <Form.Group controlId='formBasicPassword' className='auth-entry'>
                 <Form.Control

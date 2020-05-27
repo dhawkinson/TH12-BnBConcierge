@@ -17,7 +17,7 @@ const router = express.Router();
 // local modules
 const auth = require('../../middleware/auth');
 const User = require('../../models/User');
-const keys = require('../../config/keys');
+const keys = require('../../../client/src/config/keys');
    
 // ******************************************************************
 // *****  route: GET to /api/auth                               *****

@@ -27,7 +27,7 @@ const Navbar = ({ auth: { isAuthenticated, loading } }) => {
         <Col className='headline col'>
           <Headline />
         </Col>
-      <Col xs='auto' className='links col'>
+        <Col xs='auto' className='links col'>
           {!loading && (isAuthenticated ? <AuthLinks /> : <GuestLinks />) }
         </Col>
       </Row>
