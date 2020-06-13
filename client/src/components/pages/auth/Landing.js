@@ -13,8 +13,8 @@ import PropTypes from 'prop-types'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-import Map from '../landing/Map'
-import Pitch from '../landing/Pitch'
+import Map from '../../helpers/Map'
+import Pitch from '../../helpers/Pitch'
 
 const Landing = ({ isAuthenticated }) => {
   if ( isAuthenticated ) {

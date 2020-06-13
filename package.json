@@ -13,6 +13,8 @@
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "dependencies": {
+    "@sendgrid/mail": "^7.2.0",
+    "async": "^3.2.0",
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "chalk": "^4.0.0",
@@ -20,6 +22,8 @@
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
+    "crypto-js": "^4.0.0",
+    "eslint-plugin-react-hooks": "^4.0.4",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "express-validator": "^6.4.1",
@@ -27,6 +31,7 @@
     "jquery": "^3.5.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.10",
+    "nodemailer": "^6.4.6",
     "passport": "^0.4.1",
     "passport-facebook": "^3.0.0",
     "passport-local": "^1.0.0",

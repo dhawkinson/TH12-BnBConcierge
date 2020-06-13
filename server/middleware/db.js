@@ -8,7 +8,6 @@ const mongoose = require('mongoose');       // require mongoose ODM library
 const chalk    = require('chalk');          // used for coloring console.log output
 
 // local modules
-// const keys = require('../../client/src/config/keys') // require the config file pointer
 const keys = require('../../client/src/config/keys'); // require the config file pointer
 const URI  = keys.mongoURI                    // get the mongo connection string from keys file
 

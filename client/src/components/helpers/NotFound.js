@@ -1,12 +1,15 @@
-// NotFound.js -- components/layout (client-side)
-// component for handling not found errors.
+// NotFound.js
+// ****************************************************************************
+// *****  Client side -- client/src/components/pages/helpers/NotFound.js  *****
+// *****  Placeholder for routes Not Found                                *****
+// ****************************************************************************
 
 import React  from 'react'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-import ErrorIcon from '../../../assets/icons/error.png'
+import ErrorIcon from '../../assets/icons/error.png'
 
 const NotFound = () => {
   return (

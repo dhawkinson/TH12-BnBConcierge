@@ -138,6 +138,10 @@ img {
   outline: none;
 }
 
+.btn-pw-reset {
+  color: var(--primary-color);
+}
+
 .badge {
   font-size: 0.8rem;
   padding: 0.1rem;

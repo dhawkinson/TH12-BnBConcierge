@@ -5,6 +5,7 @@
 //************************************************************
 
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 const UserSchema = new mongoose.Schema({
   username: {
@@ -12,22 +13,24 @@ const UserSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  // NOTE: to self -- password is entered in Register.js for Local users
-  // may not be used at all for Social users -- waiting to see
   password: {
-    type: String
+    type: String,
+    required: true
   },
-  // NOTE: to self -- provider and providerProfileId anticipate future addition
+  // NOTE: -- the next three fields by default are null
+  //       they are temporarily set for password reset, then return to null
+  resetPasswordToken: String,
+  resetPasswordExpires: Date,
+  resetPasswordEmail: String,
+  // NOTE: -- provider and providerProfileId anticipate future addition
   //       of credentialing with Social Media (facebook & twitter)
   provider: {
     type: String,
     enum: ['local','facebook', 'twitter'],
     required: true
   },
-  // NOTE: to self -- providerProfileId used only with social media login
-  providerProfileId: {
-    type: String
-  },
+  // NOTE: -- providerProfileId used only with social media login
+  providerProfileId: String,
   dateAdded: {
     type: Date,
     default: Date.now

@@ -1,6 +1,6 @@
 // favorite.js
 // ******************************************************************
-// *****  Client side -- client/src/reducers/favorite.js        *****
+// *****  Client side -- client/src/redux/reducers/favorite.js  *****
 // *****  Favorite Reducers - manages state on favorite routes  *****
 // ******************************************************************
 
@@ -12,10 +12,14 @@ import {
   GET_FAVORITES
  } from '../actions/types'
 
+// initialize state for favorites processing
+// favorite = current favorite
+// favorites = array of user favorites
+// loading = boolean flag (is the process loading)
+// error = object containing error encountered in favorite processing
 const initialState = {
   favorite: null,
   favorites: [],
-  repos: [],
   loading: true,
   error: {}
 }

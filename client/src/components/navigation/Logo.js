@@ -15,7 +15,7 @@ const Logo = ({ auth: { isAuthenticated, loading } }) => {
   return (
     <div className='logo'>
       {!loading &&
-        ( isAuthenticated ? <Link to='/home'><img className='logo-icon' src={LogoIcon} alt='logo-icon' /></Link> : <Link to='/landing'><img className='logo-icon' src={LogoIcon} alt='logo-icon' /></Link> )
+        ( isAuthenticated ? <Link to='/home'><img className='logo-icon' src={LogoIcon} alt='logo-icon' /></Link> : <Link to='/'><img className='logo-icon' src={LogoIcon} alt='logo-icon' /></Link> )
       }
      
     </div>

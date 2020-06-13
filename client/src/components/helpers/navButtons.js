@@ -10,7 +10,7 @@ import { withStyles } from '@material-ui/core/styles'
 // style the local button
 const LocalButton = withStyles({
   root: {
-    background: '#FF802C',
+    background: '#5cb85c',
     borderRadius: 3,
     border: 0,
     color: 'white',
@@ -28,7 +28,7 @@ const LocalButton = withStyles({
 // style the facebook button
 const FacebookButton = withStyles({
   root: {
-    background: '#4E71A8',
+    background: '#3b5998',
     borderRadius: 3,
     border: 0,
     color: 'white',
@@ -46,7 +46,7 @@ const FacebookButton = withStyles({
 // style the twitter button
 const TwitterButton = withStyles({
   root: {
-    background: '#1DA1F2',
+    background: '#00acee',
     borderRadius: 3,
     border: 0,
     color: 'white',

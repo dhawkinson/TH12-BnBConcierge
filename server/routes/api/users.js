@@ -29,7 +29,7 @@ router.get('/', (req, res) => res.send('User route'));    // use with POSTMAN fo
 
 // ***********************************************************************
 // *****  route: POST to /api/users                                  *****
-// *****  desc: Register (create) a user                             *****
+// *****  desc: Register (create) a new user                         *****
 // *****  access: Public                                             *****
 // *****  matches to: client/src/actions/auth, register()            *****
 // *****       & client/src/reducers/auth.js, case REGISTER_SUCCESS  *****
@@ -71,6 +71,7 @@ router.post('/',
       user.password = await bcrypt.hash(password, salt);
       user.provider = 'local';
       user.providerProfileId = '';
+      
       await user.save();
 
       // Return jsonwebtoken
@@ -79,7 +80,7 @@ router.post('/',
       jwt.sign(
         payload,
         keys.jwtSecret,
-        { expiresIn: 604800 },    //  7 days
+        { expiresIn: 604800000 },    //  7 days
         (err, token) => {
           // if the process errors out -- throw the error
           if (err) throw err;

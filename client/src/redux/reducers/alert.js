@@ -1,15 +1,16 @@
 // alert.js
-// *********************************************************
-// *****  Client side -- client/src/reducers/alert.js  *****
-// *****  Alert Reducers - manages state on alerts     *****
-// *********************************************************
+// ***************************************************************
+// *****  Client side -- client/src/redux/reducers/alert.js  *****
+// *****  Alert Reducers - manages state on alerts           *****
+// ***************************************************************
 
 import { SET_ALERT, REMOVE_ALERT } from '../actions/types'
 
 // set initial state for alerts
+// the empty array indicates no alerts
 const initialState = []
 
-export default function(state = initialState, action) {
+export default (state = initialState, action) => {
   // destructure the action -- 'type' is the type, 'payload' is the data (in this case the id of the alert)
   const { type, payload } = action
   
