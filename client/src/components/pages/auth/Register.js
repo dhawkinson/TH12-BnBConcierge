@@ -9,10 +9,7 @@ import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import RegisterIcon from '@material-ui/icons/PersonAdd';
 
 import { RegisterButton } from '../../helpers/navButtons';
@@ -57,56 +54,58 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   };
 
   return (
-    <div className='page-content'>
-      <Container>
-        <Row className='register'>
-          <Col className='register-content' style={{ textAlign: 'center' }}>
-            <h3 className="register-head">Register User (Local)</h3>
-            <p className="lead">Create Your Account</p>
-            <Form style={{ textAlign: 'center' }} onSubmit={e => onSubmit(e)}>
-              <Form.Group controlId='formBasicText' className='auth-entry'>
-                <Form.Control
-                  type="text"
-                  placeholder="Username"
-                  name="username"
-                  value={username}
-                  onChange={e => onChange(e)}
-                />
-              </Form.Group>
-              <Form.Group controlId='formBasicPassword' className='auth-entry'>
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  value={password}
-                  onChange={e => onChange(e)}
+    <div id='page-container'>
+      <div id='content-wrap' className='RegisterUser'>
+        <h4 className="RegisterHead">Register User (Local)</h4>
+        <h6 className="RegisterSubhead">Create Your Account</h6>
+        <Form
+          className='RegisterForm'
+          onSubmit={e => onSubmit(e)}
+        >
+          <Form.Group controlId='formBasicText' className='auth-entry'>
+            <Form.Control
+              type="text"
+              placeholder="Username"
+              name="username"
+              value={username}
+              onChange={e => onChange(e)}
+            />
+          </Form.Group>
+          <br />
+          <Form.Group controlId='formBasicPassword' className='auth-entry'>
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              name="password"
+              value={password}
+              onChange={e => onChange(e)}
 
-                />
-              </Form.Group>
-              <Form.Group controlId='formBasicPassword2' className='auth-entry'>
-                <Form.Control
-                  type="password"
-                  placeholder="Confirm Password"
-                  name="password2"
-                  value={password2}
-                  onChange={e => onChange(e)}
+            />
+          </Form.Group>
+          <br />
+          <Form.Group controlId='formBasicPassword2' className='auth-entry'>
+            <Form.Control
+              type="password"
+              placeholder="Confirm Password"
+              name="password2"
+              value={password2}
+              onChange={e => onChange(e)}
 
-                />
-              </Form.Group>
-            </Form>
-            <RegisterButton
-              className='btn-auth btn-local'
-              startIcon={<RegisterIcon />}
-              onClick={e => onSubmit(e)}
-            >
-              Register
-            </RegisterButton>
-            <p className="my-3">
-              Already Have an Account? <Link to="/login">Log In</Link>
-            </p>
-          </Col>
-        </Row>
-      </Container>
+            />
+          </Form.Group>
+          <br />
+          <RegisterButton
+            className='btn-auth btn-local'
+            startIcon={<RegisterIcon />}
+            onClick={e => onSubmit(e)}
+          >
+            Register
+          </RegisterButton>
+        </Form>
+        <p className="LinkToLogin my-3">
+          Already Have an Account? <Link to="/login">Log In</Link>
+        </p>
+      </div>
     </div>
   )
 };

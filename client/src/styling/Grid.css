@@ -1,0 +1,513 @@
+/************************/
+/***** Grid Layouts *****/
+/************************/
+
+/****************************/
+/***** Header Component *****/
+/****************************/
+.HeadBar {
+  position: fixed;
+  z-index: 10;
+  top: 0; /* Stick it to the top */
+  height: 4rem;
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 5fr 6fr;
+  grid-template-areas: "logo title nav";
+
+  /* Cosmetics */
+  background-color: var(--primary-color);
+  border-bottom: solid 1px var(--primary-color);
+}
+
+.Logo {
+  grid-area: logo;
+  padding-top: .75rem;
+  padding-left: .75rem;
+}
+
+.Title {
+  grid-area: title;
+  height: 70px;
+  color: var(--warning-color);
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.Title, 
+.NavGuest,
+.NavAuth {
+  padding-top: 1.5rem;
+}
+
+.NavGuest {
+  grid-area: nav;
+
+  display: grid;
+  grid-template-columns: repeat(6, auto);
+  grid-template-areas: ". . . . login register";
+}
+
+.Login {
+  grid-area: login;
+}
+
+.Register {
+  grid-area: register;
+}
+
+.NavAuth {
+  grid-area: nav;
+
+  display: grid;
+  grid-template-columns: repeat(6, auto);
+  grid-template-areas: "weather dining activities favorites about logout";
+}
+
+.WeatherLink {
+  grid-area: weather;
+}
+
+.DiningLink {
+  grid-area: dining;
+}
+
+.ActivitiesLink {
+  grid-area: activities;
+}
+
+.FavoritesLink {
+  grid-area: favorites;
+}
+
+.AboutLink {
+  grid-area: about;
+}
+
+.LogoutLink {
+  grid-area: logout;
+}
+
+.NavGuest a,
+.NavAuth a {
+  color: var(--primary-light-color);
+  font-size: 1rem;
+  font-weight: bold;
+  transition: 0.5s;
+  text-decoration: none;
+}
+
+.NavAuth a.LogoutLink {
+  color: var(--danger-color);
+}
+
+.NavGuest a:hover,
+.NavAuth a:hover {
+  transform: scale(1.1);
+  color: var(--primary-light-color);
+  text-decoration: none;
+}
+
+.Burger {
+  display: none;
+  grid-area: burger;
+  margin: 0 20px 0 0;
+  margin-top: 1rem;
+  padding: 0;
+  justify-self: end;
+  font-size: 40px;
+  border: none;
+  background: none;
+  outline: none;
+  transition: 0.1s;
+}
+.Burger:active {
+  transform: scale(1.2);
+}
+
+.NavAnimation-enter {
+  opacity: 0;
+  transform: scale(0.5);
+}
+.NavAnimation-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 350ms, transform 350ms;
+}
+.NavAnimation-exit {
+  opacity: 1;
+}
+.NavAnimation-exit-active {
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 350ms, transform 350ms;
+}
+
+/****************************/
+/***** Footer Component *****/
+/****************************/
+.FootBar {
+  display: grid;
+  z-index: 10;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "copyright credits";
+  justify-items: 'center';
+  align-items: 'center';
+  gap: 5%;
+
+  /* Cosmetics */
+  background-color: var(--primary-color);
+  border-bottom: solid 1px var(--primary-color);
+  color: var(--primary-light-color);
+}
+
+.Copyright {
+  grid-area: copyright;
+  margin: 0 auto 0 auto;
+  margin-top: 1.5rem;
+}
+
+.Credits {
+  grid-area: credits;
+  margin: 0 auto 0 auto;
+  margin-top: 1.5rem;
+}
+
+/************************/
+/***** Landing Page *****/
+/************************/
+.Landing {
+  position: relative;
+  top: 4rem; /* Stick up against the Header */
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10%;
+  grid-template-areas: "map-image map-text";
+  background-image: url(../assets/images/povertyBay.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+.MapImage {
+  grid-area: map-image;
+}
+
+.MapText {
+  grid-area: map-text;
+  color: var(--analogous-right-color);
+}
+
+.MapText h6 {
+  color: var(--analogous-left-color);
+}
+
+/*************************/
+/***** Register Page *****/
+/*************************/
+
+.RegisterUser {
+  position: relative;
+  top: 4rem; /* Stick up against the Header */
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: 
+  ". head ." 
+  ". subhead ." 
+  ". form ."
+  ". login ."
+  ;
+}
+
+.RegisterHead {
+  grid-area: head;
+  text-align: center;
+}
+
+.RegisterSubhead {
+  grid-area: subhead;
+  text-align: center;
+}
+
+.RegisterForm {
+  grid-area: form;
+  text-align: center;
+}
+
+.LinkToLogin {
+  grid-area: login;
+  text-align: center;
+}
+
+/**********************/
+/***** Login Page *****/
+/**********************/
+
+.LoginUser {
+  position: relative;
+  top: 4rem; /* Stick up against the Header */
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: 
+  ". head ." 
+  ". subhead ." 
+  ". form ."
+  ". register ." 
+  ". reset ."
+  ;
+}
+
+.LoginHead {
+  grid-area: head;
+  text-align: center;
+}
+
+.LoginSubhead {
+  grid-area: subhead;
+  text-align: center;
+}
+
+.LoginForm {
+  grid-area: form;
+  text-align: center;
+}
+
+.LinkToRegister {
+  grid-area: register;
+  text-align: center;
+}
+
+.RequestReset {
+  grid-area: reset;
+  text-align: center;
+}
+
+/******************************/
+/***** Request Reset Page *****/
+/******************************/
+
+.ResetRequest {
+  position: relative;
+  top: 4rem; /* Stick up against the Header */
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-areas: 
+  ". . . . head head head head . . . ." 
+  ". . . . subhead subhead subhead subhead . . . ." 
+  ". . . . form form form form . . . ." 
+  ". . . . cancel send send send . . . ." 
+  ;
+}
+
+.RequestHead {
+  grid-area: head;
+  text-align: center;
+}
+
+.RequestSubhead {
+  grid-area: subhead;
+  text-align: center;
+}
+
+.RequestForm {
+  grid-area: form;
+  text-align: center;
+}
+
+.CancelRequest {
+  grid-area: cancel;
+  text-align: right;
+}
+
+.SendRequest {
+  grid-area: send;
+  margin-right: 3rem;
+}
+
+/*******************************/
+/***** Reset Password Page *****/
+/*******************************/
+
+.ResetPassword {
+  position: relative;
+  top: 4rem; /* Stick up against the Header */
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-areas: 
+  ". . . head head head head head head . . ." 
+  ". . . . subhead subhead subhead subhead . . . ." 
+  ". . . . form form form form . . . ." 
+  ". . . . cancel reset reset reset . . . ." 
+  ;
+}
+
+.ResetHead {
+  grid-area: head;
+  text-align: center;
+}
+
+.ResetSubhead {
+  grid-area: subhead;
+  text-align: center;
+}
+
+.ResetForm {
+  grid-area: form;
+  text-align: center;
+}
+
+.CancelReset {
+  grid-area: cancel;
+}
+
+.ResetPassword {
+  grid-area: reset;
+}
+
+/*********************/
+/***** Home Page *****/
+/*********************/
+.Home {
+  position: relative;
+  top: 4rem; /* Stick up against the Header */
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 40% 40%;
+  justify-items: center;
+  align-items: center;
+  gap: 10 px;
+  grid-template-areas: 
+  "weather dining" 
+  "activities favorites"
+  ;
+}
+
+.WeatherImage {
+  grid-area: weather;
+}
+
+.DiningImage {
+  grid-area: dining;
+}
+
+.ActivitiesImage {
+  grid-area: activities;
+}
+
+.FavoritesImage {
+  grid-area: favorites;
+}
+
+/* image captioning */
+.caption {
+  position: relative;
+  display: inline-block;
+}
+
+.caption .text {
+  position: absolute;
+  z-index: 5;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 25%;
+  text-align: center;
+  width: 95%;
+  color: var(--warning-color);
+}
+
+/************************/
+/***** Weather Page *****/
+/************************/
+/*****  background  *****/
+#content-wrap.Weather {
+  background-image: url(../assets/images/seattleWeather.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+.WeatherHead {
+  text-align: center
+}
+.CurrentlyGrid {
+  position: relative;
+  top: 4rem; /* Stick up against the Header */
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr repeat(8, 1fr) 1fr;
+  grid-template-areas: '. when summry icon precip temp humid visblty wind .';
+}
+
+.CurrentlyGrid > span {
+  padding: 2rem 1rem;
+}
+
+.DailyGrid {
+  position: relative;
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr repeat(8, 1fr) 1fr;
+  grid-template-areas: '. when summry icon precip temp humid visblty wind .';
+}
+
+.DailyGrid > span {
+  padding: 2rem 1rem;
+}
+
+/***************************************/
+/***** About Page (!isSmallScreen) *****/
+/***************************************/
+.About {
+  position: fixed;
+  top: 4rem; /* Stick up against the Navbar */
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+  ". head ."
+  ". subhead ."
+  ". content ."
+}
+
+.AboutHead {
+  grid-area: head;
+}
+
+.AboutSubhead {
+  grid-area: subhead;
+}
+
+.AboutContent {
+  grid-area: content;
+}
+
+.AboutHead,
+.AboutSubhead {
+  text-align: center;
+}
+
+.AboutContent p {
+  text-align: left;
+}
+
+.AboutContent h4 {
+  text-align: center;
+}

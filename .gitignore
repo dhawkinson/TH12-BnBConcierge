@@ -1,7 +1,6 @@
 node_modules/
 client/src/config/dev.js
 .snippets/
+apiSample*/
 
-sendgrid.env
-
-server/example*
+server/sendgrid.env

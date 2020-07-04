@@ -1,8 +1,15 @@
 // alert.js
-// ***************************************************************
-// *****  Client side -- client/src/redux/reducers/alert.js  *****
-// *****  Alert Reducers - manages state on alerts           *****
-// ***************************************************************
+// *******************************************************************
+// *****  Client side -- client/src/redux/reducers/alert.js      *****
+// *****  Alert Reducers - manages state on alerts               *****
+// *****  Breaking it down:                                      *****
+// *****        Set the initialState ( the default )             *****
+// *****        Then, for each action dispatched to the reducer  *****
+// *****        destucture the action into the;                  *****
+// *****        type -- (what is happening)                      *****
+// *****        payload -- (the resulting data)                  *****
+// *****        then reset the state (for passing as props)      *****
+// *******************************************************************
 
 import { SET_ALERT, REMOVE_ALERT } from '../actions/types'
 

@@ -1,11 +1,11 @@
-// attractions.js
+// activities.js
 // *****************************************************************************************
-// *****  Server side -- server/routes/api/attractions.js                              *****
+// *****  Server side -- server/routes/api/activities.js                               *****
 // *****  These are the server-side attraction routes for the app                      *****
 // *****  NOTE how it works: (not necessarily in the sequence following)               *****
-// *****  GET list of candidate attractions:                                           *****
-// *****  1. Category and Radius are determined on the Client side by manual entry.    *****
-// *****  2. Category and Radius are passed the server side for query.                 *****
+// *****  GET list of candidate activities:                                            *****
+// *****  1. Category and Radius are specified on the Client side by manual entry.     *****
+// *****  2. Category and Radius are passed to the server side for query.              *****
 // *****  3. API Base URL and API Key are retrieved from keys file.                    *****
 // *****  4. Query endpoint is constructed from Base URL, API Key, and passed params.  *****
 // *****  5. Query is executed.                                                        *****

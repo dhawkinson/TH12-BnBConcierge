@@ -1,0 +1,86 @@
+/*************************/
+/***** Global Styles *****/
+/*************************/
+:root {
+  --primary-color: #057a85;
+  --primary-light-color: #d1ffff;
+  --analogous-left-color: #0c058c;
+  --analogous-right-color: #058512;
+  --lighten-left-color: #021185;
+  --danger-color: #f51401;
+  --warning-color: #ffc501;
+  --success-color: #1bf501;
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--primary-color);
+  background: var(--primary-light-color) no-repeat center center/cover;
+}
+
+a {
+  color: var(--analogous-left-color);
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}
+
+/************************/
+/***** Generic Page *****/
+/************************/
+/***** page container -- wraps the page, min height = 100% vh. *****/
+/***** position relative so children can be absolute           *****/
+#page-container {
+  position: relative;
+  min-height: 100%;
+  background: var(--primary-light-color) no-repeat center center/cover;
+}
+
+/***** content wrap -- carries the content, bottom padding = height of footer. *****/
+#content-wrap {
+  padding-bottom: 4rem;
+}
+
+/***** header -- absolute positioning, sticks to top, and will not move *****/
+#header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 4rem
+}
+
+/***** footer -- absolute positioning, sticks to bottom, and will move down             *****/
+/***** if page content is taller than vh. Height matches botton-padding of content-wrap *****/
+#footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 4rem
+}
+
+.caption {
+  border: 2px solid var(--primary-color);
+}
+
+.box {
+  background-color: rgba(209, 255, 255, 0.5);
+}
+.box-title {
+  color: var(--primary-color);
+}

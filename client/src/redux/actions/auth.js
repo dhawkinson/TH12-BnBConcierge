@@ -134,7 +134,7 @@ export const login = (username, password) => async dispatch => {
 // *****              matches to: server/routes/api/auth/router.get('/forgot')     *****
 // *****              & client/src/reducers/auth.js, case RESET_REQUESTED_SUCCESS  *****
 // *************************************************************************************
-export const requestReset = (username, email) => async dispatch => {
+export const resetRequest = (username, email) => async dispatch => {
   // body contains the form input
   const body = JSON.stringify({ username, email });
   try {

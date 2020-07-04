@@ -1,38 +1,37 @@
 // Landing.js
 /*****************************************************************/
-/*****  Client side -- client/frontend/src/pages/Landing.js (Public)  *****/
+/*****  Client side -- client/frontend/src/pages/Landing.js  *****/
 /*****  This is the client Landing Page for the app.         *****/
 /*****  It is the first page the user sees.                  *****/
 /*****************************************************************/
 
-import React from 'react'
-import { Redirect } from 'react-router-dom'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
+import React from 'react';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-
-import Map from '../../helpers/Map'
-import Pitch from '../../helpers/Pitch'
+import MapImage from '../../helpers/MapImage';
+import MapText from '../../helpers/MapText';
 
 const Landing = ({ isAuthenticated }) => {
-  if ( isAuthenticated ) {
-    return <Redirect to='/home' />
-  }
+
+  // Redirect if not logged in
+  if (isAuthenticated) {
+    return <Redirect to='/home' />;
+  };
 
   return (
-    <div className='page-content'>
-      <Row className='landing'>
-          <Col xs={12} sm={6}><Map style={{ margin: '0 auto' }} /></Col>
-          <Col xs={12} sm={6}><Pitch style={{ margin: '0 auto' }} /></Col>
-      </Row>
+    <div id='page-container'>
+      <div id='content-wrap' className='Landing'>
+          <MapImage />
+          <MapText />
+      </div>
     </div>
   )
-}
+};
 
-Landing.propTypes = { isAuthenticated: PropTypes.bool, }
+Landing.propTypes = { isAuthenticated: PropTypes.bool, };
 
-const mapStateToProps = state => ({ isAuthenticated: state.auth.isAuthenticated })
+const mapStateToProps = state => ({ isAuthenticated: state.auth.isAuthenticated });
 
-export default connect(mapStateToProps)(Landing)
+export default connect(mapStateToProps)(Landing);

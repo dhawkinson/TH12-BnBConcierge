@@ -1,47 +1,53 @@
 // weather.js
-// **************************************************************************************
-// *****  Server side -- server/routes/api/weather.js                               *****
-// *****  These are the server-side weather routes for the app                      *****
-// *****  NOTE how it works: (not necessarily in the sequence following)            *****
-// *****  GET the Current and Weekly forecast                                       *****
-// *****  1. API Base URL and API Key are retrieved from keys file.                 *****
-// *****  2. Query endpoint is constructed from Base URL, API Key.                  *****
-// *****  3. Query is executed.                                                     *****
-// *****  4. Response data (current & Weekly forecast) is sent back to Client side  ***** 
-// *****     for presentation.                                                      *****
-// **************************************************************************************
+// **************************************************************************
+// *****  Server side -- server/routes/api/weather.js                   *****
+// *****  This is the server-side weather route (only one) for the app  *****
+// **************************************************************************
 
-// ***** NOTE: This module assumes and requires that Darksky is the API consumed. *****
+// *****  NOTE: Assumes/requires that darksky.net is the API consumed.  *****
 
 // node modules
+const express = require('express');
 const axios = require('axios');
 const chalk = require('chalk');
 
-// local modules
-const keys = require('../../../client/src/config/keys');
+const router = express.Router();
 
-const apiUrl = keys.darkskyBaseUrl;
-const queryStr = {
-  apiKey: keys.darkskyApiKey,
-  lat: keys.locationLat,
-  lng: keys.locationLng
-}
+// *********************************************************************
+// *****  route: GET to /api/weather                               *****
+// *****  desc: Return api weather data                            *****
+// *****  access: Private                                          *****
+// *****  matches to: client/src/actions/weather.js, getWeather()  *****
+// *****       & client/src/reducers/weather.js, case GET_WEATHER  *****
+// *********************************************************************
+router.get('/weather', async (req, res) => {
+  try {
+    // build url to weather api
+    const keys = require('../../../client/src/config/keys');
+  
+    const baseUrl = keys.darkskyBaseUrl;
+    const apiKey = keys.darkskyApiKey;
+    const lat = keys.locationLat;
+    const lng = keys.locationLng;
+    const url = `${baseUrl}${apiKey}/${lat},${lng}`
 
-const url = `${apiUrl}${queryStr.apiKey}/${queryStr.lat},${queryStr.lng}`
+    const res = await axios.get(url);
+    
+    // forecast -- strip down res, only using currently{} & daily{}
+    const forecast = {
+      currently: res.data.currently,
+      daily: res.data.daily.data
+    };
 
-console.log(chalk.blue('URL ',url))
+    console.log(chalk.yellow('SERVER SIDE FORECAST ', forecast));
 
-axios.get(url)
-  .then((res) => {
-    // success
-    console.log(chalk.yellow('RES data ', res.data));
-    const data = JSON.stringify(res.data, null, 2);
-    console.log(chalk.blue('RES data ', data));
-    console.log(chalk.green('RES status ', res.status));
-    console.log(chalk.yellow('RES status text ', res.statusText));
-    console.log(chalk.green('RES headers ', res.headers));
-    console.log(chalk.yellow('RES config ', res.config));
-  }, (error) => {
-    // error
-    console.log(chalk.red('ERR ', error));
-  })
+    // return forecast
+    res.json({ forecast });
+
+  } catch (error) {
+    console.error(chalk.red('ERR ',error.message));
+    res.status(500).send('Server Error');
+  }
+});
+
+module.exports = router;

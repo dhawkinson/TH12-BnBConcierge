@@ -1,6 +1,6 @@
 // history.jsx
 // ************************************************/
-// ***** client side - client/frontend/src/history.jsx *****/
+// ***** client side - client/src/history.jsx *****/
 // ***** the routing history component        *****/
 // ************************************************/
 

@@ -9,9 +9,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
@@ -29,7 +26,7 @@ const ResetPassword = ({ setAlert, resetPassword, isAuthenticated }) => {
 
   // set initial state (formData) & setForData updates state
   const [formData, setFormData] = useState({
-    username: '',
+    username: '',   // this is not right -- I should be passing it in
     password: '',
     password2: ''
   })
@@ -57,53 +54,50 @@ const ResetPassword = ({ setAlert, resetPassword, isAuthenticated }) => {
   }
 
   return (
-    <div className='page-content'>
-      <Container>
-        <Row className='reset-password'>
-          <Col className='request-content' style={{ textAlign: 'center' }}>
-            <h3 className='request-head'>Reset Password - { username }</h3>
-            <p className='lead'>Enter New Password</p>
-            <Form style={{ textAlign: 'center' }} onSubmit={e => onSubmit(e)}>
-              {/* <Form.Group controlId='formBasicText' className='auth-entry'>
-                <Form.Control
-                  type="text"
-                  placeholder="Username"
-                  name="username"
-                  value={username}
-                  onChange={e => onChange(e)}
-                />
-              </Form.Group> */}
-              <Form.Group controlId='formBasicPassword' className='auth-entry'>
-                <Form.Control
-                  type="password"
-                  placeholder="New Password"
-                  name="password"
-                  value={password}
-                  onChange={e => onChange(e)}
-                />
-              </Form.Group>
-              <Form.Group controlId='formBasicPassword2' className='auth-entry'>
-                <Form.Control
-                  type="password"
-                  placeholder="Confirm New Password"
-                  name="password2"
-                  value={password2}
-                  onChange={e => onChange(e)}
-                />
-              </Form.Group>
-            </Form>
-            <Link to='/login'><img className='cancel-icon' src={CancelIcon} alt='cancel' style={{ width: '3rem' }} />{'   '}</Link>
-            <Button
-              className='btn btn-reset'
-              type = 'submit'
-              variant = 'success'
-              onClick={e => onSubmit(e)}
-            >
-              Reset Password
-            </Button>
-          </Col>
-        </Row>
-      </Container>
+    <div id='page-container'>
+      <div id='content-wrap' className='ResetPassword'>
+        <h4 className='ResetHead'>Reset Password - { username }</h4>
+        <h6 className='ResetSubhead'>Enter New Password</h6>
+        <Form
+          className='ResetForm'
+          onSubmit={e => onSubmit(e)}
+        >
+          <Form.Group controlId='formBasicPassword' className='auth-entry'>
+            <Form.Control
+              type="password"
+              placeholder="New Password"
+              name="password"
+              value={password}
+              onChange={e => onChange(e)}
+            />
+          </Form.Group>
+          <br/>
+          <Form.Group controlId='formBasicPassword2' className='auth-entry'>
+            <Form.Control
+              type="password"
+              placeholder="Confirm Password"
+              name="password2"
+              value={password2}
+              onChange={e => onChange(e)}
+            />
+          </Form.Group>
+          <br/>
+        </Form>
+        <Link
+          to='/login'
+          className='CancelReset'
+        >
+          <img src={CancelIcon} alt='cancel' style={{ width: '3rem' }}/>
+        </Link>
+        <Button
+          className='ResetPassword'
+          type = 'submit'
+          variant = 'success'
+          onClick={e => onSubmit(e)}
+        >
+          Reset Password
+        </Button>
+      </div>
     </div>
   )
 };
@@ -115,8 +109,8 @@ ResetPassword.propTypes = {
   isAuthenticated: PropTypes.bool
 }
 
-const mapStateToProps = state => ({ isAuthenticated: state.auth.isAuthenticated })
+const mapStateToProps = state => ({ isAuthenticated: state.auth.isAuthenticated });
 
 // connect() is added to the export because of redux, 
 // passes state as first param (mapStateToProps in this case), an object of any actions to pass as second param (setAlert, register)
-export default connect( mapStateToProps, { setAlert, resetPassword } )(ResetPassword)
+export default connect(mapStateToProps, { setAlert, resetPassword })(ResetPassword);

@@ -11,9 +11,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 
 // local modules
@@ -48,55 +45,51 @@ const Login = ({ setAlert, login, isAuthenticated }) => {
   };
 
   return (
-    <div className='page-content'>
-      <Container>
-        {/* Login Form */}
-        <Row className='login'>
-          <Col className='login-content' style={{ textAlign: 'center' }}>
-            <h3 className='login-head'>Login</h3>
-            <p className='lead'>Local Credentials</p>
-            <Form
-              className='login-form'
-              onSubmit={e => onSubmit(e)}
-              style={{ textAlign: 'center' }}
-            >
-              <Form.Group controlId="formBasicText" className='auth-entry'>
-                <Form.Control 
-                  type="text" 
-                  placeholder="Username" 
-                  name="username" 
-                  value={username}
-                  onChange={e => onChange(e)}
-                />
-              </Form.Group>
-              <Form.Group controlId="formBasicPassword" className='auth-entry'>
-                <Form.Control
-                    type="password"
-                    placeholder="Password"
-                    name="password" 
-                    value={password}
-                    onChange={e => onChange(e)}
+    <div id='page-container'>
+      <div id='content-wrap' className='LoginUser'>
+        <h4 className='LoginHead'>Login</h4>
+        <h6 className='LoginSubhead'>Local Credentials</h6>
+        <Form
+          className='LoginForm'
+          onSubmit={e => onSubmit(e)}
+        >
+          <Form.Group controlId="formBasicText" className='auth-entry'>
+            <Form.Control 
+              type="text" 
+              placeholder="Username" 
+              name="username" 
+              value={username}
+              onChange={e => onChange(e)}
+            />
+          </Form.Group>
+          <br />
+          <Form.Group controlId="formBasicPassword" className='auth-entry'>
+            <Form.Control
+                type="password"
+                placeholder="Password"
+                name="password" 
+                value={password}
+                onChange={e => onChange(e)}
 
-                  />
-              </Form.Group>
-              <LocalButton
-                className='btn btn-local'
-                type='submit'
-                startIcon={<ExitToAppIcon />}
-                onClick={e => onSubmit(e)}
-              >
-                Local Credentials
-              </LocalButton>
-            </Form>
-            <p className="my-3">
-              Don't have an account? <Link to="/register">Register</Link>
-            </p>
-            <p className="my-3">
-              Forgot Password?  <Link to="/requestReset">Request Reset</Link>
-            </p>
-          </Col>
-        </Row>
-      </Container>
+              />
+          </Form.Group>
+          <br />
+          <LocalButton
+            className='btn btn-local'
+            type='submit'
+            startIcon={<ExitToAppIcon />}
+            onClick={e => onSubmit(e)}
+          >
+            Local Credentials
+          </LocalButton>
+        </Form>
+        <p className="LinkToRegister my-3">
+          Don't have an account? <Link to="/register">Register</Link>
+        </p>
+        <p className="RequestReset my-3">
+          Forgot Password?  <Link to="/requestReset">Request Reset</Link>
+        </p>
+      </div>
     </div>
   );
 };

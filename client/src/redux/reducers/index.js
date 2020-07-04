@@ -13,10 +13,10 @@ import { combineReducers } from 'redux'
 
 import alert from './alert'
 import auth from './auth'
-import favorite from './favorite'
+import weather from './weather'
 
 export default combineReducers({
   alert,
   auth,
-  favorite
+  weather
 })

@@ -13,16 +13,18 @@ import ErrorIcon from '../../../assets/icons/error.png'
 
 const Dining = () => {
   return (
-    <div className='page-content'>
-      <Container>
-        <Row>
-          <Col style={{ textAlign: 'center', marginTop: '5rem' }}>
-          <h3 className="text-danger">
-            <img src={ ErrorIcon } alt='error' style={{ width: '2rem' }} /> Dining is a Placeholder Page For Now <img src={ ErrorIcon } alt='error' style={{ width: '2rem' }} />
-          </h3>
-          </Col>
-        </Row>
-      </Container>
+    <div id='page-container'>
+      <div id='content-wrap'>
+        <Container>
+          <Row>
+            <Col>
+            <h3 className="text-danger">
+              <img src={ ErrorIcon } alt='error' style={{ width: '2rem' }} /> Dining is a Placeholder Page For Now <img src={ ErrorIcon } alt='error' style={{ width: '2rem' }} />
+            </h3>
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </div>
   )
 }

@@ -1,0 +1,255 @@
+/***************************************/
+/***** Mobile Styles               *****/
+/***** Using Bootstrap Breakpoints *****/
+/***************************************/
+/* lg = 992 */
+@media (min-width: 992px) {
+
+  .logo-icon {
+    width: 60px;
+    height: auto;
+  }
+  .Title,
+  .links {
+    font-size: 1.5rem;
+  }
+
+  .icon {
+    width: 40px;
+    height: auto;
+  }
+
+  .MapText {
+    font-size: 1rem;
+  }
+}
+
+/* md = 768 */
+@media (min-width: 768px) {
+
+  .logo-icon {
+    width: 50px;
+    height: auto;
+  }
+  .menu-btn {
+      display: none;
+  }
+  .links {
+    font-size: .75rem;
+  }
+  .icon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .MapText {
+    font-size: .75rem;
+  }
+
+}
+
+/* sm = 576 */
+@media (min-width: 576px) {
+
+  .logo-icon {
+    width: 40px;
+    height: auto;
+  }
+  .Title,
+  .links {
+    font-size: 1rem;
+  }
+
+  .FootBar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .Copyright,
+  .Credits {
+    font-size: .75rem;
+  }
+
+  .icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  .MapText {
+    font-size: .75rem;
+  }
+}
+
+/***** isSmallScreen *****/
+@media (max-width: 575px) {
+
+  .HeadBar {
+    grid-template-columns: 2fr 8fr 2fr;
+    grid-template-areas: 
+    "logo title burger";
+  }
+  .Tile {
+    font-size: .75rem
+  }
+
+  .NavGuest {
+    grid-template-rows: repeat(2, auto);
+    grid-template-areas:
+    "login"
+    "register"
+    ;
+    padding: 0;
+    background: var(--primary-light-color);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  .NavAuth {
+    grid-template-rows: repeat(6, auto);
+    grid-template-areas:
+    "weather"
+    "dining"
+    "activities"
+    "favorites"
+    "about"
+    "logout"
+    ;
+    padding: 0;
+    background: var(--primary-light-color);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  .NavGuest a,
+  .NavAuth a {
+    color: var(--primary-color);
+  }
+
+  .Burger {
+    display: inline;
+  }
+
+  .logo-icon {
+    width: 30px;
+    height: auto;
+  }
+
+  .menu-icon {
+    width: 30px;
+    height: auto;
+    margin-top: -4rem;
+  }
+
+  .FootBar {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "copyright" 
+    "credits";
+  }
+
+  .Copyright {
+    margin-top: .5rem;
+    font-size: .65rem;
+  }
+
+  .Credits {
+    margin-top: -.5rem;
+    font-size: .65rem;
+  }
+
+  .Landing {
+    grid-template-columns: 1fr;
+    gap: 0;
+    grid-template-areas: 
+    "map-image" 
+    "map-text";
+  }
+
+  .Map {
+    display: none;
+  }
+
+  .MapText {
+    font-size: .75rem;
+  }
+
+  .Home {
+    position: fixed;
+    top: 4rem; /* Stick up against the Navbar */
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 23.5% 23.5% 23.5% 23.5%;
+    grid-template-areas:
+    "weather"
+    "dining"
+    "activities"
+    "favorites";
+    align-self: center;
+    align-items: center;
+  }
+
+  .Weather {
+    font-size: .75rem;
+    height: 21vh;
+  }
+
+  .Dining {
+    font-size: .75rem;
+    height: 21vh;
+  }
+
+  .Activities {
+    font-size: .75rem;
+    height: 21vh;
+  }
+
+  .Favorites {
+    font-size: .75rem;
+    height: 21vh;
+  }
+
+  .text h2,
+  .text h4{
+    font-size: .95rem;
+  }
+  
+  .RegisterUser {
+    grid-template-columns: 1fr 10fr 1fr;
+  }
+  
+  .LoginUser {
+    grid-template-columns: 1fr 10fr 1fr;
+  }
+
+  .ResetRequest {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-areas: 
+    ". head head head head head head head head head head ." 
+    ". . . subhead subhead subhead subhead subhead subhead . . ." 
+    ". form form form form form form form form form form ." 
+    ". . cancel send send send send send send send send ."
+    ;
+  }
+
+  .ResetPassword {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-areas: 
+    ". head head head head head head head head head head ." 
+    ". . . subhead subhead subhead subhead subhead subhead . . ." 
+    ". form form form form form form form form form form ." 
+    ". . cancel reset reset reset reset reset reset reset reset ." 
+    ;
+  }
+
+  .About {
+    grid-template-columns: 1fr 10fr 1fr;
+    font-size: .75rem;
+  }
+
+  .auth-entry,
+  .btn-auth {
+    width: 80%;
+    margin: auto;
+  }
+}

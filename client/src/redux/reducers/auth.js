@@ -1,8 +1,15 @@
 // auth.js
-// ***************************************************************
-// *****  Client side -- client/src/redux/reducers/auth.js   *****
-// *****  Auth Reducers - manages state on auth/user routes  *****
-// ***************************************************************
+// *******************************************************************
+// *****  Client side -- client/src/redux/reducers/auth.js       *****
+// *****  Auth Reducers - manages state on auth/user routes      *****
+// *****  Breaking it down:                                      *****
+// *****        Set the initialState ( the default )             *****
+// *****        Then, for each action dispatched to the reducer  *****
+// *****        destucture the action into the;                  *****
+// *****        type -- (what is happening)                      *****
+// *****        payload -- (the resulting data)                  *****
+// *****        then reset the state (for passing as props)      *****
+// *******************************************************************
 
 // ********************************************************************
 // *****  NOTE to self: re persistence of token via localStorage  *****
@@ -34,15 +41,6 @@ import {
   LOGOUT,
   ACCOUNT_DELETED
 } from '../actions/types'
-
-// initial state for authentication processes
-// token = jsonwebtoken (persisted in localStorage)
-// isAuthenticated = boolean flag reflecting whether or not the current user is authenticated
-// loading = boolean flag reflecting whether or not a process is loading
-// user = the current user (all the fields)
-// emailuser = user requesting pw reset instructions (same as user but separated instance for clarity)
-// pwEmailAddr = the email address to which password instructions will be sent
-// pwEmailSent = boolean flag reflecting whether or not the password email has been sent
 
 const initialState = {
   token: localStorage.getItem('token'),
