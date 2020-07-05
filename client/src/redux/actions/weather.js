@@ -25,12 +25,13 @@ import {
 // *****              & src/reducers/forecast.js/GET_FORECAST      *****
 // *********************************************************************
 export const getWeather = () => async dispatch => {
+
   try {
     // get weather forecast
     const res = await axios.get(`/api/weather`);
 
-    console.log(chalk.yellow('action creator getWeather ', res));
-    
+    console.log(chalk.yellow('ACTION CREATOR getWeather ', res));
+
     // SUCCESS - set the action -- type = GET_WEATHER & payload = res.data (the forecast)
     dispatch({
       type: GET_FORECAST,
@@ -38,6 +39,7 @@ export const getWeather = () => async dispatch => {
     });
   } catch (err) {
     // FAIL - set the action FORECAST_ERROR, no payload to pass
+    console.log('FORECAST_ERROR ',err)
     dispatch({
       type: FORECAST_ERROR
     });

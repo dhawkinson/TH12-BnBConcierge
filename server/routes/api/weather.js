@@ -29,20 +29,22 @@ router.get('/weather', async (req, res) => {
     const apiKey = keys.darkskyApiKey;
     const lat = keys.locationLat;
     const lng = keys.locationLng;
-    const url = `${baseUrl}${apiKey}/${lat},${lng}`
+    const url = `${baseUrl}${apiKey}/${lat},${lng}`;
+
+    console.log(chalk.blue('SERVER SIDE ROUTE FORECAST URL ', url));
 
     const res = await axios.get(url);
-    
+
     // forecast -- strip down res, only using currently{} & daily{}
-    const forecast = {
+    const weather = {
       currently: res.data.currently,
       daily: res.data.daily.data
     };
 
-    console.log(chalk.yellow('SERVER SIDE FORECAST ', forecast));
+    console.log(chalk.yellow('SERVER SIDE ROUTE FORECAST DATA ', weather));
 
-    // return forecast
-    res.json({ forecast });
+    // return weather
+    res.json({ weather });
 
   } catch (error) {
     console.error(chalk.red('ERR ',error.message));

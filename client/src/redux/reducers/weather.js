@@ -18,8 +18,7 @@ import {
 
 const initialState = {
   forecast: null,
-  loading: true,
-  error: {}
+  loading: true
 }
 
 export default (state = initialState, action) => {
@@ -27,7 +26,6 @@ export default (state = initialState, action) => {
 
   switch (type) {
     case GET_FORECAST:
-      console.log('REDUCER: ', payload);
       return {
         ...state,
         forecast: payload,
@@ -37,8 +35,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         forecast: null,
-        loading: false,
-        error: payload
+        loading: false
       }
     default:
       return state

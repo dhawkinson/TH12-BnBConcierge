@@ -4,7 +4,7 @@
 //*****  This is the client Weather Page for the app                       *****
 //******************************************************************************
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
@@ -12,8 +12,11 @@ import Moment from 'react-moment';
 import Spinner from '../../helpers/Spinner'
 import { getWeather } from '../../../redux/actions/weather'
 
-const Weather = ({ forecast, loading }) => {
+const Weather = ({ getWeather, weather: { forecast, loading } }) => {
 
+  // upon load - excute useEffect() only once -- loads forecast into state
+  useEffect(() => { getWeather(); }, [getWeather])
+  
   return (
     <div id='page-container'>
       <div id='content-wrap' className='Weather'>
@@ -128,9 +131,9 @@ const Weather = ({ forecast, loading }) => {
 
 Weather.propTypes = {
   getWeather: PropTypes.func.isRequired,
-  forecast: PropTypes.object.isRequired
+  weather: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({ forecast: state.forecast });
 
-export default connect( mapStateToProps, {getWeather} )(Weather);
+export default connect( mapStateToProps, { getWeather } )(Weather);
