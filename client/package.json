@@ -35,6 +35,10 @@
     "connect-flash": "^0.1.1",
     "http-proxy-middleware": "^1.0.3",
     "jquery": "^3.5.1",
+    "moment": "^2.27.0",
+    "moment-timezone": "^0.5.31",
+    "popper.js": "^1.16.1",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
@@ -46,6 +50,7 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
+    "use-axios-client": "^2.0.0",
     "uuid": "^7.0.3"
   },
   "devDependencies": {

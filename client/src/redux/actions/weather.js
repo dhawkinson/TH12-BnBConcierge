@@ -26,16 +26,24 @@ import {
 // *********************************************************************
 export const getWeather = () => async dispatch => {
 
+  console.log(chalk.blue('ACTION CREATOR got here '));
+
   try {
     // get weather forecast
     const res = await axios.get(`/api/weather`);
 
     console.log(chalk.yellow('ACTION CREATOR getWeather ', res));
 
+    // pass only the currently & daily segments of the api
+    const forecast = {
+      currently: res.data.currently,
+      daily: res.data.daily.data
+    }
+
     // SUCCESS - set the action -- type = GET_WEATHER & payload = res.data (the forecast)
     dispatch({
       type: GET_FORECAST,
-      payload: res.data
+      payload: forecast
     });
   } catch (err) {
     // FAIL - set the action FORECAST_ERROR, no payload to pass

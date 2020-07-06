@@ -5,17 +5,19 @@
 //******************************************************************************
 
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 
 import Spinner from '../../helpers/Spinner'
 import { getWeather } from '../../../redux/actions/weather'
 
-const Weather = ({ getWeather, weather: { forecast, loading } }) => {
+const Weather = ({ getWeather, forecast, loading }) => {
 
-  // upon load - excute useEffect() only once -- loads forecast into state
-  useEffect(() => { getWeather(); }, [getWeather])
+  const dispatch = useDispatch();
+
+  // upon load - execute useEffect() only once -- loads forecast into state
+  useEffect(() => { dispatch(getWeather()); }, [dispatch, getWeather])
   
   return (
     <div id='page-container'>
@@ -131,9 +133,11 @@ const Weather = ({ getWeather, weather: { forecast, loading } }) => {
 
 Weather.propTypes = {
   getWeather: PropTypes.func.isRequired,
-  weather: PropTypes.object.isRequired
+  forecast: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({ forecast: state.forecast });
+const mapStateToProps = state => {
+  return { forecast: state.weather.forecast }
+};
 
 export default connect( mapStateToProps, { getWeather } )(Weather);
