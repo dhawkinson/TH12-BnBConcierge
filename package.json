@@ -10,7 +10,7 @@
     "start": "node server",
     "server": "nodemon server || true",
     "client": "npm start --prefix client || true",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
   "dependencies": {
     "@sendgrid/mail": "^7.2.0",
@@ -23,6 +23,7 @@
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "crypto-js": "^4.0.0",
+    "dotenv": "^8.2.0",
     "eslint-plugin-react-hooks": "^4.0.4",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
@@ -32,6 +33,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.10",
     "nodemailer": "^6.4.6",
+    "path": "^0.12.7",
     "yelp-fusion": "^3.0.0"
   },
   "devDependencies": {

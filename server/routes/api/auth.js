@@ -20,12 +20,12 @@ const router = express.Router();
 // local modules
 const auth = require('../../middleware/auth');
 const User = require('../../models/User');
-const keys = require('../../../client/src/config/keys');
 
-const sgMailKey = keys.sendGridApiKey;
-const pwResetSecret = keys.pwResetSecret;
-const pwEmailAuthorizer = keys.pwEmailAuthorizer;
-const pwEmailPassword = keys.pwEmailPassword;
+const sgMailKey = process.env.REACT_APP_SENDGRIP_API_KEY;
+const pwResetSecret = process.env.REACT_APP_PW_RESET_SECRET;
+const pwEmailAuthorizer = process.env.REACT_APP_PW_EMAIL_AUTHORIZER;
+const pwEmailPassword = process.env.REACT_APP_PW_EMAIL_PASSWORD;
+const jwtSecret = process.env.REACT_APP_JWT_SECRET;
 
 // ********************************************************************************
 // *****  The next three functions are used in the reset password chain       *****
@@ -120,13 +120,16 @@ const setupAndSendEmail = (resetToken, user, done) => {
 
 // *****  Routes
 
-// ******************************************************************
-// *****  route: GET to /api/auth                               *****
-// *****  desc: Return authenticated user                       *****
-// *****  access: Private                                       *****
-// *****  matches to: client/src/actions/auth, loaduser()       *****
-// *****       & client/src/reducers/auth.js, case USER_LOADED  *****
-// ******************************************************************
+// ************************************************************************
+// *****  route: GET to /api/auth                                     *****
+// *****  desc: Return authenticated user                             *****
+// *****  access: Private                                             *****
+// *****  matches to: client/src/redux/actions/auth, loaduser()       *****
+// *****       & client/src/redux/reducers/auth.js, case USER_LOADED  *****
+// *****                                                              *****
+// *****  NOTE: using jwt for auth token, rather than cookie          *****
+// *****                                                              *****
+// ************************************************************************
 router.get('/', auth, async (req, res) => {
   try {
     user = await User.findById(req.user.id).select('-password');    //  NOTE: to self req.user.id is from auth (jwt.verify)
@@ -177,7 +180,7 @@ router.post('/', checks, async (req, res) => {
       // Return jsonwebtoken
       const payload = { user: { id: user.id } };
         
-      jwt.sign( payload, keys.jwtSecret,  { expiresIn: 604800 }, (err, token) => {
+      jwt.sign( payload, jwtSecret,  { expiresIn: 604800 }, (err, token) => {
         // if the process errors out -- throw the error
         if (err) throw err;
         // no error -- send the token to the client side
@@ -185,7 +188,7 @@ router.post('/', checks, async (req, res) => {
       });
 
     } catch (err) {
-      console.error(chalk.red(err.message));
+      console.error(err.message);
       res.status(500).send('Server error - serving user');
     }
   }
@@ -307,7 +310,7 @@ router.put('/resetPassword', checks, async (req, res) => {
         }
       );
     } catch (err) {
-      console.error(chalk.red(err.message));
+      console.error(err.message);
       res.status(500).send('Server error - resetting user password');
     }
   }

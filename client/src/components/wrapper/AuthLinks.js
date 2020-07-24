@@ -50,7 +50,7 @@ const AuthLinks = ({ auth: { isAuthenticated, loading }, logout }) => {
         unmountOnExit
       >
         <nav className="NavAuth">
-          <a className="WeatherLink ml-3" href="/weather">Weather</a>
+          <a className="WeatherLink ml-3" href="/forecast">Forecast</a>
           <a className="DiningLink ml-3" href="/dining">Dining</a>
           <a className="ActivitiesLink ml-3" href="/activities">Activities</a>
           <a className='FavoritesLink ml-3' href="/favorites">Favorites</a>

@@ -13,13 +13,13 @@ import Login from '../pages/auth/Login';
 import RequestReset from '../pages/auth/ResetRequest';
 import ResetPassword from '../pages/auth/ResetPassword';
 import Home from '../pages/functional/Home';
-import Weather from '../pages/functional/Weather';
+import Forecast from '../pages/functional/Forecast';
 import Dining from '../pages/functional/Dining';
 import Activities from '../pages/functional/Activities';
 import Favorites from '../pages/functional/Favorites';
 import About from '../pages/functional/About';
-import NotFound from '../../components/helpers/NotFound';
-import Alert from '../../components/helpers/Alert';
+import NotFound from '../../components/segments/NotFound';
+import Alert from '../../components/segments/Alert';
 import PrivateRoute from './PrivateRoute';
 
 const Routes = () => {
@@ -33,7 +33,7 @@ const Routes = () => {
         <Route exact path='/resetRequest' component={RequestReset} />
         <Route exact path='/resetPassword' component={ResetPassword} />
         <PrivateRoute exact path='/home' component={Home} />
-        <PrivateRoute exact path='/weather' component={Weather} />
+        <PrivateRoute exact path='/forecast' component={Forecast} />
         <PrivateRoute exact path='/dining' component={Dining} />
         <PrivateRoute exact path='/activities' component={Activities} />
         <PrivateRoute exact path='/favorites' component={Favorites} />

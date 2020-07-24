@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import RegisterIcon from '@material-ui/icons/PersonAdd';
 
-import { RegisterButton } from '../../helpers/navButtons';
+import { RegisterButton } from '../../segments/NavButtons';
 import { setAlert } from '../../../redux/actions/alert';
 import { register } from '../../../redux/actions/auth';
 

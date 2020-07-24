@@ -14,7 +14,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Form from 'react-bootstrap/Form';
 
 // local modules
-import { LocalButton } from '../../helpers/navButtons';
+import { LocalButton } from '../../segments/NavButtons';
 // import MailIcon from '../../../assets/icons/email@.png';
 import { setAlert } from '../../../redux/actions/alert'
 import { login } from '../../../redux/actions/auth';
@@ -103,6 +103,7 @@ Login.propTypes = {
 const mapStateToProps = state => ({ isAuthenticated: state.auth.isAuthenticated })
 
 // connect() is added to the export because of redux, 
-// passes state as first param (mapStateToProps in this case), an object of any actions to pass as second param (setAlert, register)
+// passes state as first param (mapStateToProps in this case), 
+// and an object of any actions to pass as second param(setAlert, login)
 
 export default connect( mapStateToProps, { setAlert, login } )(Login)

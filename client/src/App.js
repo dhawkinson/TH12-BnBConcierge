@@ -24,6 +24,8 @@ import './styling/App.css';
 import './styling/Grid.css';
 import './styling/Media.css';
 
+require ('dotenv').config();
+
 // check for token in localStorage and bring it back if there
 // this is how the app determines if we have an authenticated user or not
 if (localStorage.token) {
@@ -33,6 +35,7 @@ if (localStorage.token) {
 
 const App = () => {
   // run an effect and clean it up only once (on mount and unmount), pass an empty array ([]) as a second argument.
+  // this eliminates the need for utilizing the redux connect
   useEffect(() => { store.dispatch(loadUser()) }, []);
 
   // NOTE to self: <Provider> is the linkage between React and Redux; store is the intersection
@@ -48,4 +51,5 @@ const App = () => {
     </Provider>
   )
 }
+
 export default App;

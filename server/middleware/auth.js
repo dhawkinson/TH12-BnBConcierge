@@ -10,8 +10,7 @@
 // node modules
 const jwt = require('jsonwebtoken');
 
-// local modules
-const keys = require('../../client/src/config/keys');
+const jwtSecret = process.env.REACT_APP_JWT_SECRET
 
 module.exports = function (req, res, next) {
   // Get token from req header 'x-auth-token'
@@ -26,7 +25,7 @@ module.exports = function (req, res, next) {
   // Verify token is valid if it is found
   try {
     // decode with the token and the jwt secret
-    const decoded = jwt.verify(token, `${keys.jwtSecret}`);
+    const decoded = jwt.verify(token, jwtSecret);
     // success - req.user is passed to all protected routes as the authenticated user
     req.user = decoded.user;
     next();

@@ -5,15 +5,15 @@
 // ****************************************************
 // node modules
 const mongoose = require('mongoose');       // require mongoose ODM library
-const chalk    = require('chalk');          // used for coloring console.log output
+const chalk = require('chalk');
 
 // local modules
-const keys = require('../../client/src/config/keys'); // require the config file pointer
-const URI  = keys.mongoURI                    // get the mongo connection string from keys file
+// const keys = require('../config/keys'); // require the config file pointer
+const uri = process.env.MONGO_URI;         // get the mongo connection string
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(URI, {
+    await mongoose.connect(uri, {
       useNewUrlParser: true,
       useCreateIndex: true,
       useUnifiedTopology: true,
@@ -21,7 +21,7 @@ const connectDB = async () => {
     });
     console.log(chalk.green('MongoDB Connected...'));
   } catch(err) {
-    console.error(chalk.red(err.message));
+    console.error(err.message);
     // exit ptocess with fail
     process.exit(1);
   }

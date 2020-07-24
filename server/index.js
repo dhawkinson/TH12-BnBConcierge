@@ -9,6 +9,8 @@ const express = require('express');
 const chalk = require('chalk');
 const cors = require('cors');
 
+require ('dotenv').config();
+
 const app = express();
 
 // local modules
@@ -24,11 +26,29 @@ app.use(express.json({ extended: false }));
 // test the server connection
 app.get('/', (req, res) => res.send('API Running'));
 
-// define routes
+// designate routing
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
-app.use('/api/weather', require('./routes/api/weather'));
+// app.use('/api/forecast', require('./routes/api/forecast'));
 app.use('/api/favorites', require('./routes/api/favorites'));
+
+// Serve static assets in production - this block is executed in the order presented
+// This results in a process flow that looks like this:
+//    Look for all the routes specified above to resolve routing
+//    If not resolved: Then try using the static file for route resolution
+//    If still not resolved: As a last resort ('*'), return the html file
+// This is done because the build process (which must be executed before deployment to production)
+//    Builds static execution files that replace the whole create-react-app side of the project
+
+if (process.env.NODE_ENV === 'production') {
+  // Set static folder - do this first
+  app.use(express.static('client/build'));
+  // Serve the static asset - then do this
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+};
 
 const PORT = process.env.PORT || 5000;
 
@@ -49,13 +69,3 @@ app.use( (err, req, res, next) => {
   res.status(err.status || 500);
   // res.send({ error: err });
 });
-
-// Serve static assets in production
-if (process.env.NODE_ENV === 'production') {
-  // Set static folder
-  app.use(express.static('client/build'));
-  // Serve the static asset
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  });
-};

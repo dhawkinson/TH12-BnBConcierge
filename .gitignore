@@ -1,5 +1,5 @@
 node_modules/
-client/src/config/dev.js
+server/config/dev.js
 .snippets/
 apiSample*/
 

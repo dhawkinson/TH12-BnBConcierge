@@ -48,7 +48,7 @@ const initialState = {
   loading: true,
   user: null,
   emailuser: null,
-  pwEmailAddr: '',
+  pwEmailAddr: null,
   pwEmailSent: null
 }
 
@@ -88,7 +88,7 @@ export default (state = initialState, action) => {
         isAuthenticated: true,
         loading: false,
         user: payload,
-        pwEmailAddr: ''
+        pwEmailAddr: null
       }
     case AUTH_ERROR:
     case REGISTER_FAIL:
@@ -105,7 +105,7 @@ export default (state = initialState, action) => {
         isAuthenticated: false,
         loading: false,
         emailuser: null,
-        pwEmailAddr: '',
+        pwEmailAddr: null,
         pwEmailSent: null
       }
     default:

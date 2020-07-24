@@ -7,13 +7,13 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import SeattleWeather from '../../../assets/images/seattleWeather.jpg';
 import SeattleRestaurant from '../../../assets/images/seattleRestaurant.jpeg';
 import SeattleActivity from '../../../assets/images/hiker.jpeg';
-import Favorites from '../../../assets/images/fremont-troll.jpg';
+import Favorites from '../../../assets/images/gumwall.jpeg';
 
 const Home = ({ isAuthenticated }) => {
 

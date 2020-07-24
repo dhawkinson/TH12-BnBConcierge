@@ -21,7 +21,7 @@ export const RESET_TOKEN_SUCCESS = 'RESET_TOKEN_SUCCESS'
 export const RESET_TOKEN_FAIL = 'RESET_TOKEN_FAIL'
 export const PASSWORD_RESET_SUCCESS = 'PASSWORD_RESET_SUCCESS'
 export const PASSWORD_RESET_FAIL = 'PASSWORD_RESET_FAIL'
-// Types related to weather (redux/actions/weather.js)
+// Types related to forecast (redux/actions/forecast.js)
 export const GET_FORECAST = 'GET_FORECAST'
 export const FORECAST_ERROR = 'FORECAST_ERROR'
 // Types related to favorites (redux/actions/favorite.js)

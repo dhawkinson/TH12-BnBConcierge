@@ -10,8 +10,8 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import MapImage from '../../helpers/MapImage';
-import MapText from '../../helpers/MapText';
+import MapImage from '../../segments/MapImage';
+import MapText from '../../segments/MapText';
 
 const Landing = ({ isAuthenticated }) => {
 

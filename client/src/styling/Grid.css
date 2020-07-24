@@ -386,7 +386,7 @@
 
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 40% 40%;
+  grid-template-rows: 50% 30%;
   justify-items: center;
   align-items: center;
   gap: 10 px;
@@ -445,17 +445,17 @@
 .WeatherHead {
   text-align: center
 }
-.CurrentlyGrid {
+.CurrentGrid {
   position: relative;
   top: 4rem; /* Stick up against the Header */
   width: 100%;
 
   display: grid;
-  grid-template-columns: 1fr repeat(8, 1fr) 1fr;
-  grid-template-areas: '. when summry icon precip temp humid visblty wind .';
+  grid-template-columns: 2fr repeat(8, 1fr) 2fr;
+  grid-template-areas: '. . when summry icon temp humid visblty wind direct . .';
 }
 
-.CurrentlyGrid > span {
+.CurrentGrid > span {
   padding: 2rem 1rem;
 }
 
@@ -465,7 +465,7 @@
 
   display: grid;
   grid-template-columns: 1fr repeat(8, 1fr) 1fr;
-  grid-template-areas: '. when summry icon precip temp humid visblty wind .';
+  grid-template-areas: '. . when summry icon temp humid visblty wind direct . .';
 }
 
 .DailyGrid > span {

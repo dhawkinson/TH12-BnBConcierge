@@ -9,7 +9,6 @@
 // node modules
 const express = require('express');
 const { check, validationResult } = require('express-validator');   //  See: https://express-validator.github.io/docs/
-const chalk = require('chalk');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');    // see https://jwt.io/#debugger for docs
 
@@ -17,7 +16,6 @@ const router = express.Router();
 
 // local modules
 const User = require('../../models/User');
-const keys = require('../../../client/src/config/keys');
 
 // ****************************************************
 // *****  route: GET to /api/users                *****
@@ -38,9 +36,7 @@ const checks = [
   check('username', 'Username is required').not().isEmpty(),
   check('password', 'Password is required and must be at least 6 characters').isLength({ min: 6 })
 ];
-router.post('/',
-  checks,
-  async (req, res) => {
+router.post('/', checks, async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -79,7 +75,7 @@ router.post('/',
         
       jwt.sign(
         payload,
-        keys.jwtSecret,
+        process.env.REACT_APP_JWT_SECRET,
         { expiresIn: 604800000 },    //  7 days
         (err, token) => {
           // if the process errors out -- throw the error
@@ -89,7 +85,7 @@ router.post('/',
         }
       );
     } catch (err) {
-      console.error(chalk.red(err.message));
+      console.error(err.message);
       res.status(500).send('Server error - serving user');
     }
   }
