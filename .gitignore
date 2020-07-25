@@ -4,3 +4,4 @@ server/config/dev.js
 apiSample*/
 
 server/sendgrid.env
+*/.env
